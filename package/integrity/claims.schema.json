@@ -1,0 +1,264 @@
+{
+  "$id": "urn:dlcl:schema:claims:1.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claims": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "independent_reproduction": {
+                  "const": true
+                }
+              },
+              "required": [
+                "independent_reproduction"
+              ]
+            },
+            "then": {
+              "properties": {
+                "independent_evidence_artifacts": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "peer_reviewed": {
+                  "const": true
+                }
+              },
+              "required": [
+                "peer_reviewed"
+              ]
+            },
+            "then": {
+              "properties": {
+                "peer_review_artifacts": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "proof_status": {
+                  "const": "lean-kernel-checked"
+                }
+              },
+              "required": [
+                "proof_status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "formal_declaration": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "formal_evidence_artifacts": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "novelty_status": {
+                  "const": "specialist-audited"
+                }
+              },
+              "required": [
+                "novelty_status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "novelty_evidence_artifacts": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "computational_evidence": {
+            "items": {
+              "$ref": "#/$defs/stableId"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "formal_declaration": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "minLength": 1,
+                "type": "string"
+              }
+            ]
+          },
+          "formal_evidence_artifacts": {
+            "items": {
+              "$ref": "#/$defs/stableId"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "pattern": "^DLCL-(?:T|C|N)[0-9]+$",
+            "type": "string"
+          },
+          "independent_evidence_artifacts": {
+            "items": {
+              "$ref": "#/$defs/stableId"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "independent_reproduction": {
+            "type": "boolean"
+          },
+          "kind": {
+            "enum": [
+              "theorem",
+              "corollary",
+              "proposition",
+              "search-outcome"
+            ]
+          },
+          "manuscript_location": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "minLength": 1,
+                "type": "string"
+              }
+            ]
+          },
+          "novelty_evidence_artifacts": {
+            "items": {
+              "$ref": "#/$defs/stableId"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "novelty_status": {
+            "enum": [
+              "not-assessed",
+              "not-found-in-bounded-search",
+              "classical-antecedent-attributed",
+              "specialist-audited",
+              "not-applicable"
+            ]
+          },
+          "peer_review_artifacts": {
+            "items": {
+              "$ref": "#/$defs/stableId"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "peer_reviewed": {
+            "type": "boolean"
+          },
+          "proof_status": {
+            "enum": [
+              "planned",
+              "research-proof-draft",
+              "manuscript-proof",
+              "lean-kernel-checked",
+              "not-applicable"
+            ]
+          },
+          "scope_notes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "statement_digest": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/$defs/sha256"
+              }
+            ]
+          },
+          "status_notes": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "kind",
+          "statement_digest",
+          "manuscript_location",
+          "proof_status",
+          "formal_declaration",
+          "formal_evidence_artifacts",
+          "computational_evidence",
+          "independent_reproduction",
+          "independent_evidence_artifacts",
+          "peer_reviewed",
+          "peer_review_artifacts",
+          "novelty_status",
+          "novelty_evidence_artifacts",
+          "scope_notes",
+          "status_notes"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "package_status": {
+      "enum": [
+        "research-draft",
+        "candidate",
+        "released"
+      ]
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "package_status",
+    "claims"
+  ],
+  "type": "object",
+  "$defs": {
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "stableId": {
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$",
+      "type": "string"
+    }
+  }
+}

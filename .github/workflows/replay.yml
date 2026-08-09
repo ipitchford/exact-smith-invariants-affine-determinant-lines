@@ -1,0 +1,35 @@
+name: Exact replay
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        optimize: ['', '-O']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: package/requirements.txt
+      - name: Install pinned direct dependencies
+        run: python -m pip install -r package/requirements.txt
+      - name: Validate manifest and claims
+        working-directory: package
+        run: |
+          python ${{ matrix.optimize }} tools/check_manifest.py --root .
+          python ${{ matrix.optimize }} tools/check_claims.py --root .
+      - name: Replay exact checks
+        working-directory: package
+        run: python ${{ matrix.optimize }} verification/run_all.py --root . --mode normal
+

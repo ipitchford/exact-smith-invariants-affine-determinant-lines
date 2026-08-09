@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Research lineage from the bordered Jacobian parent to exact Smith invariants</title>
+  <desc id="desc">A three-stage diagram showing the parent rank-one theorem, the all-factor affine lift, and the child exact Smith classification.</desc>
+  <rect width="1400" height="760" fill="#F8F5EC"/>
+  <text x="70" y="80" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">From one missing scale to a character lattice</text>
+  <text x="70" y="120" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="22">An explicitly linked extension; the parent remains immutable.</text>
+
+  <rect x="70" y="205" width="350" height="350" rx="28" fill="#FFFFFF" stroke="#0A7C86" stroke-width="5"/>
+  <text x="105" y="255" fill="#0A5660" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">PARENT · RANK ONE</text>
+  <text x="105" y="310" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Bordered Jacobian</text>
+  <text x="105" y="368" fill="#0B1F33" font-family="Georgia, serif" font-size="25">Res(A,B) · (A,−B)</text>
+  <text x="105" y="425" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="20">One resultant divisor.</text>
+  <text x="105" y="460" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="20">One scaling direction.</text>
+  <text x="105" y="515" fill="#0A5660" font-family="Arial, Helvetica, sans-serif" font-size="17">doi:10.5281/zenodo.21855302</text>
+
+  <path d="M420 380 H515" stroke="#0B1F33" stroke-width="5" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#0B1F33"/></marker></defs>
+
+  <rect x="525" y="205" width="350" height="350" rx="28" fill="#FFFFFF" stroke="#D69E2E" stroke-width="5"/>
+  <text x="560" y="255" fill="#805A00" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CHILD · ALL FACTORS</text>
+  <text x="560" y="310" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Affine Plücker lift</text>
+  <text x="560" y="368" fill="#0B1F33" font-family="Georgia, serif" font-size="25">Δ × Plücker(K)</text>
+  <text x="560" y="425" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="20">All pairwise collisions.</text>
+  <text x="560" y="460" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="20">A (k−1)-torus of scales.</text>
+  <text x="560" y="505" fill="#805A00" font-family="Arial, Helvetica, sans-serif" font-size="17">Integral orientation and multi-border</text>
+
+  <path d="M875 380 H970" stroke="#0B1F33" stroke-width="5" marker-end="url(#a)"/>
+
+  <rect x="980" y="205" width="350" height="350" rx="28" fill="#0B1F33"/>
+  <text x="1015" y="255" fill="#F6D7D7" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CHILD · ARITHMETIC</text>
+  <text x="1015" y="310" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Exact Smith theory</text>
+  <text x="1015" y="368" fill="#FFFFFF" font-family="Georgia, serif" font-size="25">diag(g,…,g,gh)</text>
+  <text x="1015" y="425" fill="#CFE7E7" font-family="Arial, Helvetica, sans-serif" font-size="20">Every local valuation.</text>
+  <text x="1015" y="460" fill="#CFE7E7" font-family="Arial, Helvetica, sans-serif" font-size="20">Exact bad-prime support.</text>
+  <text x="1015" y="500" fill="#F6D7D7" font-family="Arial, Helvetica, sans-serif" font-size="15">Candidate contribution</text>
+  <text x="1015" y="526" fill="#F6D7D7" font-family="Arial, Helvetica, sans-serif" font-size="15">after bounded literature search</text>
+
+  <rect x="185" y="620" width="1030" height="74" rx="18" fill="#E6F4F3"/>
+  <text x="700" y="665" text-anchor="middle" fill="#0A5660" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">degree difference → integer character matrix → Smith invariants</text>
+</svg>

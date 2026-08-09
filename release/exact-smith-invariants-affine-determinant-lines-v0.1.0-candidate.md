@@ -1,0 +1,2319 @@
+---
+title: "Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation"
+author:
+  - "Anonymous"
+date: "9 August 2026"
+bibliography: references.bib
+link-citations: true
+lang: en-GB
+---
+
+# Abstract
+
+For positive degrees \(\mathbf d\), put
+\(g=\gcd_i d_i\) and \(\mathbf e=\mathbf d/g\), so that \(\mathbf e\) is
+primitive. Pairwise resultants of labelled binary-form factors have characters
+\(\chi_{ij}=[e_j\varepsilon_i+e_i\varepsilon_j]\) in
+\(M=\mathbb Z^k/\mathbb Z\mathbf1\). Let \(W_E(\mathbf e)\) be the matrix
+with these rows and let \(h(\mathbf e)\) be the positive gcd of its maximal
+minors. We compute the full quotient by these characters. For every prime
+\(p\), choose \(a\) with \(p\nmid e_a\). Then
+
+\[
+ \frac{M}{\langle\chi_{ij}\rangle}\otimes\mathbb Z_{(p)}
+ \cong
+ \frac{\mathbb Z_{(p)}}{
+ (e_a-\sum_{i\ne a}e_i,\;2e_ie_j:i<j,\ i,j\ne a)}.
+\]
+
+This one-generator presentation gives every valuation of the final Smith
+invariant, including the full \(2\)-adic case, a symmetric global formula, and
+an \(O(k^2)\) gcd computation. It also shows that spanning-tree minors already
+generate the full maximal-minor gcd. Consequently the complete character
+matrix for the original degrees has Smith form
+\(\operatorname{diag}(g,\ldots,g,g h(\mathbf e))\), with \(k-2\) copies of
+\(g\).
+
+We derive this lattice from an affine determinant-line theorem. Every maximal
+minor of the differential of
+\((A_1,\ldots,A_k)\mapsto\prod_iA_i\) equals, over \(\mathbb Z\), the product
+of all pairwise resultants times the corresponding Plücker coordinate of the
+product-one scaling torus, with an explicit orientation. Multi-bordering
+contracts this tensor with a vertical torus Jacobian; for semi-invariants that
+Jacobian is an integer character determinant. On the universal pairwise-coprime
+open, pairwise resultants generate all regular units modulo constants, so the
+complete lattice defines the intrinsic unit-character residual group of that
+open, not a classification of arbitrary semi-invariants. A square Laurent-unit
+normalisation realises its index. More generally, for a square full-rank
+semi-invariant character matrix \(W\) over an algebraically closed field, the
+normalised factorisation map is finite locally free on a dense target open of
+degree \(|\det W|D!/\prod_i d_i!\); its separable and inseparable factors follow
+from the Smith entries of \(W\).
+
+The square multiplication Jacobian, multifactor scalar resultant, signed
+incidence support, arithmetic-matroid multiplicity, and labelled root-partition
+count are classical inputs. The candidate increment is the exact local/global
+calculation for the cross-weighted diagonal-quotient character list, together
+with its factorisation interpretation and the explicit integral affine Plücker
+lift. The literature search is bounded, and the exact SymPy and FLINT checks are
+producer-side regression evidence rather than independent reproduction.
+
+**Keywords:** binary forms; resultants; Smith normal form; arithmetic matroids;
+torus characters; determinant lines; factorisation maps
+
+**Parent work.** This paper is a separately versioned extension of the
+unrefereed candidate *Bordered Jacobian Foundations*; see the
+[Evidence Press parent page](https://evidencepress.org/releases/bordered-jacobian-foundations/)
+and the immutable parent archive [doi:10.5281/zenodo.21855302](https://doi.org/10.5281/zenodo.21855302).
+
+# 中文摘要
+
+對正次數向量 \(\mathbf d\)，令 \(g=\gcd_i d_i\) 及
+\(\mathbf e=\mathbf d/g\)，故 \(\mathbf e\) 為本原向量。標記二元齊次式各成對結式在特徵格
+\(\mathbb Z^k/\mathbb Z\mathbf1\) 中給出交叉加權特徵
+\(\chi_{ij}=[e_j\varepsilon_i+e_i\varepsilon_j]\)。令
+\(W_E(\mathbf e)\) 為以這些特徵為列之矩陣，並以 \(h(\mathbf e)\)
+表示其最大子式的正最大公因數。本文逐質數計算由全部
+\(\chi_{ij}\) 生成之格的商：選取 \(p\nmid e_a\) 後，局部商為一生成元模，
+其關係理想由 \(e_a-\sum_{i\ne a}e_i\) 與所有
+\(2e_ie_j\;(i,j\ne a)\) 生成。此表示給出最後 Smith 不變因子的每個
+\(p\)-進賦值（包括完整的二進情形）、對稱的整體公式，以及僅用生成樹
+子式即可取得的最大子式公因數。因此未約化次數向量的 Smith 標準形為
+\(\operatorname{diag}(g,\ldots,g,gh(\mathbf e))\)。
+
+此格源自一個整數型仿射行列式線定理：多因子乘法微分的每一最大子式，
+皆為全部成對結式之乘積乘上乘積為一縮放環面的相應 Plücker 座標，並有
+明確定向。加入邊界函數後得到環面方向 Jacobian；對半不變量而言即為整數
+特徵行列式。在通用的成對互素開集上，成對結式在常數之外生成所有正則
+單位，故完整特徵格內在地描述該開集的「單位特徵」殘餘群，而非任意半不
+變量的分類。對代數閉域上的滿秩方形特徵矩陣，正規化因式分解映射在稠密
+目標開集上為有限局部自由，其次數為
+\(|\det W|D!/\prod_i d_i!\)，可分與不可分部分由 Smith 不變因子決定。
+
+方形乘法 Jacobian、多因子純量結式、有號關聯矩陣支撐、算術擬陣乘數與
+標記根分割皆屬經典輸入。本文候選增量為上述交叉加權對角商特徵格的精確
+局部與整體計算、其因式分解詮釋，以及明確的整數型仿射 Plücker 提升。
+文獻檢索範圍有限；SymPy 與 FLINT 的精確檢查僅屬作者端回歸證據，並非
+獨立重現。
+
+**關鍵詞：** 二元齊次式；結式；行列式線；代數環面；Smith 標準形；因式分解映射
+
+# 1. Introduction
+
+Let \(V_d\) be the affine coefficient space of binary forms of degree \(d\).
+For two positive degrees \(r,s\), coefficient multiplication is the morphism
+
+\[
+ m_{r,s}:V_r\times V_s\longrightarrow V_{r+s},\qquad (A,B)\longmapsto AB.
+\]
+
+Its source dimension exceeds its target dimension by one. The generic kernel
+of its differential is the infinitesimal scaling direction \((A,-B)\), induced
+by \((A,B)\mapsto(\lambda A,\lambda^{-1}B)\). The parent result proves an
+exact integral refinement of this dimension count: the complete signed
+maximal-minor vector of \(Dm_{r,s}\) is a fixed sign times
+\(\operatorname{Res}(A,B)(A,-B)\) [@AnonymousBorderedJacobian2026]. A border covector pairs
+with this missing direction. When the border is the differential of a
+bihomogeneous function, the pairing is its scaling-degree difference.
+Appendix E includes a self-contained proof of that base identity in the present
+coefficient and Sylvester conventions.
+
+The rank-one vector identity is a determinant-line completion of the classical
+square chart identities reviewed below. It is used here as the base of an
+explicit all-factor construction, not as a standalone priority claim.
+
+The rank-one formula suggests a more general object. Given positive degrees
+\(d_1,\ldots,d_k\), multiplication
+
+\[
+ m_{\mathbf d}:\prod_{i=1}^kV_{d_i}\longrightarrow V_D,
+ \qquad D=\sum_i d_i,
+\]
+
+has relative dimension \(k-1\). The product-one torus
+
+\[
+ T=\{(\lambda_1,\ldots,\lambda_k)\in\mathbb G_m^k:
+       \lambda_1\cdots\lambda_k=1\}
+\]
+
+acts within every fibre. Pairwise common roots are detected by the resultants
+\(R_{ij}=\operatorname{Res}(A_i,A_j)\). The natural candidate for the
+determinant line is therefore a product of the pairwise-collision divisor and
+the Plücker line of the torus tangent space.
+
+Several exact shadows of this expectation are classical. For two factors,
+coefficient-product equations have a square Jacobian equal, up to the stated
+coordinate convention, to a Sylvester matrix and hence to the resultant; this
+appears in Hensel-lifting, real-algebraic-geometry, projective-tangent, and
+arithmetic settings [@Artin2022, sec. 1.8, Lemma 1.8.5;
+@BasuPollackRoy2006, sec. 4.2.1; @Chipalkatti2003, Lemma 5.7;
+@BhargavaCremonaFisherGajovic2022, Lemma 2.6]. For an arbitrary number of monic
+factors, Chaperon and López de Medrano give a corank formula and prove that
+pairwise coprimality is equivalent to local invertibility
+[@ChaperonLopezDeMedrano2009, Theorem 3]. Mahatab and Sampath prove that the
+determinant of the canonical polynomial Chinese remainder map is the product
+of the pairwise resultants [@MahatabSampath2015, Theorem A.3].
+Generalized Sylvester and Koszul-complex constructions also place the
+resultant in the relevant determinantal ideals; Chardin proves divisibility of
+the maximal minors and a generic gcd statement
+[@Chardin1993, sec. IV, Lemma 1 and Remark 1]. Projective polynomial
+multiplication and its finite root-partition fibres are classical
+[@BreidingKohnSturmfels2024], as are factorisation quotients by scaling tori in
+the linear-factor case [@Kurth1997]. These antecedents determine the claim
+boundary. We do not claim the square product-Jacobian identity, the monic
+multifactor rank criterion, the scalar product \(\prod R_{ij}\), projective
+root partitions, or incidence minors as new.
+
+The principal arithmetic object is the complete edge-character list. Put
+\(g=\gcd_i d_i\) and \(\mathbf e=\mathbf d/g\). In the
+character lattice
+
+\[
+ M=X^*(T)=\mathbb Z^k/\mathbb Z\mathbf1,
+\]
+
+the primitive degrees \(\mathbf e\) give the rows of a matrix
+\(W_E(\mathbf e)\):
+
+\[
+ \chi_{ij}=[e_j\varepsilon_i+e_i\varepsilon_j],\qquad
+ C_{\mathbf e}=M/\langle\chi_{ij}:i<j\rangle.
+\]
+
+Let \(h(\mathbf e)\) be the positive gcd of the maximal minors of
+\(W_E(\mathbf e)\). Section 7 proves that it equals
+\(|C_{\mathbf e}|\).
+
+The main theorem computes \(C_{\mathbf e}\) locally at every prime by a
+one-generator presentation. It follows that \(C_{\mathbf e}\) is cyclic, that
+every \(v_p(|C_{\mathbf e}|)\) has a closed formula, and that the final index
+has a symmetric factorisation-free expression. For
+\(\mathbf d=g\mathbf e\), this yields the complete Smith form
+
+\[
+ \operatorname{diag}
+ \bigl(\underbrace{g,\ldots,g}_{k-2},g h(\mathbf e)\bigr).
+\]
+
+The proof chain leading to this arithmetic calculation has four further
+parts. First, an integral affine lift packages every maximal minor of
+\(Dm_{\mathbf d}\) as
+\(\Delta_{\mathbf d}=\prod_{i<j}R_{ij}\) times the matching torus Plücker
+coordinate, with a fixed orientation. Second, Laplace expansion and
+Cauchy--Binet give the multi-border formula; semi-invariant borders contribute
+\(\det(W)\prod_ag_a\). Third, resultant characters reduce integrally to a
+cross-weighted all-negative incidence problem, giving all square character
+minors and showing that spanning trees alone determine the full-list index.
+Fourth, pairwise resultants are proved to generate every regular unit modulo
+constants on the universal pairwise-coprime open. Hence the complete lattice is
+intrinsic in that regular-unit category, and its quotient is the unit-character
+residual group of that open.
+
+The contribution hierarchy is intentionally explicit.
+
+| Layer | Status used in this paper |
+|---|---|
+| Square multiplication Jacobian, multifactor scalar resultant, monic rank criterion, and labelled root partitions | Classical antecedents |
+| All-factor affine Plücker tensor and multi-border identity | Explicit integral lift and formal contraction of classical scalar/kernel data; candidate coordinate-level contribution |
+| Signed support and powers of two in character minors | Classical all-negative signed-incidence theory |
+| Degree weights, appended balance row, and resultant interpretation | Factorisation-specific specialisation |
+| \(m(E)\), the maximal-minor gcd, and complex toric component count | Standard arithmetic-matroid and toric-arrangement data |
+| Local cyclic presentation, exact valuations, global formula, and scaled Smith form for the cross-weighted diagonal-quotient list | Strongest candidate theorem package in this paper |
+| Generic degree \(|\det W|D!/\prod_i d_i!\) | Scheme-theoretic synthesis of a labelled root-partition cover and a torus isogeny |
+
+For a square full-rank semi-invariant character matrix \(W\) over an
+algebraically closed field, we prove after restriction to an explicit dense
+target open that the normalised factorisation map is finite locally free of
+degree
+
+\[
+ |\det W|\frac{D!}{\prod_i d_i!}.
+\]
+
+Smith form then separates its total, separable, and inseparable degrees. A
+square Laurent basis of the full regular-unit character lattice always realises
+the full-list index, but a square chart made from individual resultants need
+not do so. The results do not classify arbitrary polynomial semi-invariants,
+recognise level sets as affine spaces, classify Keller maps, or imply a Hessian
+conjecture result. The exact programs are producer-side regression checks; they
+are not independent reproduction, formal verification, or peer review.
+
+# 2. Conventions and antecedents
+
+## 2.1 Coefficients and resultants
+
+For a positive integer \(d\), write
+
+\[
+ A=\sum_{j=0}^{d}a_jX^{d-j}Y^j.
+\]
+
+After dehomogenising by \(X=1\), the coefficient vector
+\((a_0,\ldots,a_d)\) is read in ascending powers of \(Y\). For forms of
+degrees \(r\) and \(s\), the Sylvester matrix consists of the \(s\) shifted
+rows of the first coefficient vector followed by the \(r\) shifted rows of the
+second. In this convention,
+\(\operatorname{Res}(X^r,Y^s)=1\). This choice fixes every sign below.
+
+The classical interpretation of a resultant as a determinant goes back to
+Cayley [@Cayley1848] and is developed through modern determinant-of-complexes
+formalisms by Jouanolou, Chardin, Demazure, and Gelfand--Kapranov--Zelevinsky
+[@Jouanolou1991; @Chardin1993; @Demazure2012; @GelfandKapranovZelevinsky1994]. Jouanolou's work also
+contains a bordered-minor evaluation for generic linear forms and extensive
+gradient and bordered-Macaulay identities [@Jouanolou1991, secs. 5.4.1--5.4.4; @Jouanolou1995;
+@Jouanolou1997]. Those identities concern square elimination systems,
+resultant complexes, or congruences modulo the resultant. The morphism studied
+here differentiates multiplication with respect to factor coefficients and is
+rectangular before borders are chosen.
+
+Adjacent work on binary discriminants and resultants includes the perfectness
+and equivariant resolutions of their Jacobian ideals
+[@DAndreaChipalkatti2007]. That theory concerns the resultant hypersurface and
+its coefficient derivatives. More directly, Chipalkatti proves that the
+differential of projective two-factor binary-form multiplication is injective
+exactly for coprime factors [@Chipalkatti2003, Lemma 5.7], while Chaperon and
+López de Medrano analyse the corank and singularities of multiplication of
+monic polynomials, including arbitrary numbers of factors
+[@ChaperonLopezDeMedrano2009, Theorems 1--4]. These sources establish the
+rank-locus background. They do not, in the expanded bounded corpus examined
+for this project, state the universal non-monic all-factor complementary-minor
+tensor with its integral orientation.
+
+## 2.2 Dimensions and the ordered torus basis
+
+Fix \(k\ge2\) and positive degrees \(\mathbf d=(d_1,\ldots,d_k)\). Set
+
+\[
+ D=\sum_{i=1}^kd_i,\qquad n=D+1,
+ \qquad t=k-1,qquad N=D+k=n+t.
+\]
+
+The differential \(M=Dm_{\mathbf d}\) is an \(n\times N\) matrix. Source
+coordinates are ordered first by factor and then by coefficient. For
+\(b=1,\ldots,t\), define the source tangent vector
+
+\[
+ \kappa_b=(0,\ldots,0,A_b,0,\ldots,0,-A_k),
+\]
+
+where the two nonzero blocks are the \(b\)-th and last factor blocks. Let
+\(K\) be the \(t\times N\) matrix with rows \(\kappa_b\). Direct
+differentiation gives
+
+\[
+ M K^{\mathsf T}=0.
+\]
+
+These rows correspond to the cocharacter basis \(e_b-e_k\) of the product-one
+torus.
+
+For a \(t\)-element subset \(I\subset\{0,\ldots,N-1\}\), let
+\(M_{\widehat I}\) be the square matrix obtained by deleting the columns in
+\(I\). Define
+
+\[
+ p_I(M)=(-1)^{\sum_{i\in I}i}\det M_{\widehat I}.
+\]
+
+The zero-based sign is part of the theorem, not shorthand for an unspecified
+orientation. Write \(K_I\) for the \(t\times t\) submatrix of \(K\) in the
+columns \(I\).
+
+Finally, define the pairwise-collision product
+
+\[
+ \Delta_{\mathbf d}=\prod_{1\le i<j\le k}
+ \operatorname{Res}(A_i,A_j).
+\]
+
+## 2.3 Square and monic shadows
+
+Fixing one leading coefficient and the product leading coefficient removes a
+two-factor affine scaling direction and turns the remaining product equations
+into a square Sylvester map. Artin identifies this Jacobian directly
+[@Artin2022, sec. 1.8, Lemma 1.8.5]; Basu, Pollack, and Roy give the monic
+version [@BasuPollackRoy2006, sec. 4.2.1], and Bhargava, Cremona, Fisher, and
+Gajović prove over an arbitrary ring that the monic-times-arbitrary chart has
+Jacobian equal to the resultant [@BhargavaCremonaFisherGajovic2022, Lemma
+2.6]. The Stacks Project uses the same Sylvester Jacobian to describe the
+coprime monic chart as étale [@StacksProject2026, tag 00U0]. For several monic
+factors, the product of pairwise resultants is also supplied by the polynomial
+Chinese-remainder determinant
+[@MahatabSampath2015, Theorem A.3].
+
+Thus neither the square Jacobian nor the multifactor scalar is a contribution
+of this paper. Before any leading coefficient is fixed, however, the
+differential has a \((k-1)\)-dimensional kernel. The refinement recorded below
+retains the full complementary-minor tensor: which maximal minor corresponds
+to which torus Plücker coordinate, with what universal integral orientation.
+This lift is close to the classical identities and is formal from a generic
+determinant-line viewpoint once one chart minor and the kernel are known. The
+value of the treatment below is its universal coordinate identity, integral
+orientation, and compatibility with all complementary minors. No standalone
+priority claim is made for the lift. The next section isolates the composition
+rule used here.
+
+# 3. A determinant-line composition lemma
+
+The induction factors \(k\)-fold multiplication through \((k-1)\)-fold
+multiplication and one two-factor multiplication. The following
+complementary-minor identity works over an arbitrary commutative ring, so no
+division by a selected nonzero minor or generic-rank reduction is needed.
+
+**Lemma 3.1 (block-composition sign).** Let \(R\) be a commutative ring and
+fix \(r,q\ge1\) and \(t_1\ge0\). Put
+
+\[
+ m=r+q-1,\qquad N=r+t_1+q,
+\]
+
+and suppose
+
+\[
+ P\in R^{r\times(r+t_1)},\qquad
+ L\in R^{m\times(m+1)},\qquad
+ S=\begin{pmatrix}P&0\\0&I_q\end{pmatrix}
+ \in R^{(m+1)\times N}.
+\]
+
+Set \(M=LS\). Assume that \(K_P\in R^{t_1\times(r+t_1)}\),
+\(\beta\in R^{m+1}\), and scalars \(c_P,c_L\in R\) satisfy
+
+\[
+ p_J(P)=c_P\det(K_P)_J\quad(|J|=t_1),
+\]
+
+\[
+ L\beta=0,\qquad
+ p_{\{\ell\}}(L)=c_L\beta_\ell\quad(0\le\ell\le m).
+\]
+
+Let \(\lambda\in R^N\) be a lift with \(S\lambda=\beta\), extend \(K_P\)
+by zero columns to \(K_0=(K_P\;0)\), and order
+
+\[
+ K=\begin{pmatrix}K_0\\\lambda^{\mathsf T}\end{pmatrix}
+\]
+
+by the \(t_1\) inherited rows followed by the lifted outer row. Then for every
+\((t_1+1)\)-element column set \(I\),
+
+\[
+ \boxed{
+ p_I(M)=(-1)^{t_1}c_Pc_L\det K_I.
+ }
+\]
+
+**Proof.** The block matrix \(S\) inherits the complementary-minor identity
+
+\[
+ p_J(S)=c_P\det(K_0)_J\qquad(|J|=t_1).
+\tag{3.1}
+\]
+
+Indeed, if \(J\) meets the identity block, both sides vanish by block rank; if
+\(J\) lies in the \(P\)-source, the complementary square matrix has diagonal
+blocks \(P_{\widehat J}\) and \(I_q\).
+
+Fix \(I=\{i_0<\cdots<i_{t_1}\}\) and put \(C=I^c\), so \(|C|=m\).
+Cauchy--Binet, with the intermediate rows in increasing order, gives
+
+\[
+ \det M_C
+ =\sum_{\ell=0}^{m}\det L_{\widehat\ell}\det S_{\widehat\ell,C}
+ =c_L\sum_{\ell=0}^{m}(-1)^\ell\beta_\ell
+       \det S_{\widehat\ell,C}.
+\tag{3.2}
+\]
+
+Expanding the \((m+1)\)-square matrix \([S_C\mid\beta]\) along its final
+column yields
+
+\[
+ \sum_{\ell=0}^{m}(-1)^\ell\beta_\ell
+       \det S_{\widehat\ell,C}
+ =(-1)^m\det[S_C\mid\beta].
+\tag{3.3}
+\]
+
+Since \(\beta=S\lambda\), multilinearity in the final column gives
+
+\[
+ \det[S_C\mid\beta]
+ =\sum_{a=0}^{t_1}\lambda_{i_a}\det[S_C\mid S_{i_a}].
+\tag{3.4}
+\]
+
+There are \(m-i_a+a\) elements of \(C\) larger than \(i_a\). Move the last
+column \(S_{i_a}\) into increasing position and apply (3.1):
+
+\[
+ \begin{aligned}
+ \det[S_C\mid S_{i_a}]
+ &=(-1)^{m-i_a+a}\det S_{C\cup\{i_a\}}\\
+ &=(-1)^{m+a+\sum I}c_P
+   \det(K_0)_{I\setminus\{i_a\}}.
+ \end{aligned}
+\tag{3.5}
+\]
+
+The two occurrences of \(i_a\) cancel modulo two. On the other hand, expansion
+of \(\det K_I\) along its last row is
+
+\[
+ \det K_I
+ =\sum_{a=0}^{t_1}(-1)^{t_1+a}\lambda_{i_a}
+   \det(K_0)_{I\setminus\{i_a\}}.
+\tag{3.6}
+\]
+
+Equations (3.4)--(3.6) imply
+
+\[
+ \det[S_C\mid\beta]
+ =(-1)^{m+\sum I+t_1}c_P\det K_I.
+\tag{3.7}
+\]
+
+Substitution into (3.2)--(3.3) gives
+\(\det M_C=(-1)^{\sum I+t_1}c_Pc_L\det K_I\). Multiplying by the
+defining factor \((-1)^{\sum I}\) proves the result. \(\square\)
+
+**Remark 3.2.** The factor \((-1)^{t_1}\) depends on the fixed block order. It
+cannot be recovered from the unordered multiset of degrees. This is visible
+already for the ordered triples \((1,1,2)\), \((1,2,1)\), and \((2,1,1)\),
+whose final orientations are respectively negative, positive, and negative.
+
+# 4. Affine Plücker lift of the multiplication Jacobian
+
+Define
+
+\[
+E(\mathbf d)=
+ \sum_{1\le i<j\le k}d_i(d_j+1)+\binom{k+1}{2}+1,
+ \qquad
+ \varepsilon_{\mathbf d}=(-1)^{E(\mathbf d)}.
+\]
+
+Since
+
+\[
+ \binom{k+1}{2}+1-\binom{k-1}{2}=2k,
+\]
+
+the same orientation is obtained by replacing the final two terms in
+\(E(\mathbf d)\) with \(\binom{k-1}{2}\). This parity-equivalent form makes the
+inductive contribution of the \(k-2\) inherited kernel directions transparent.
+
+**Theorem 4.1 (affine Plücker lift of the classical multiplication
+Jacobian).** For every \(k\ge2\), every
+positive ordered degree vector \(\mathbf d\), and every \((k-1)\)-element
+source-column set \(I\),
+
+\[
+ \boxed{
+ p_I(Dm_{\mathbf d})
+ =\varepsilon_{\mathbf d}\Delta_{\mathbf d}\det K_I.
+ }
+\]
+
+The equality is an identity in the universal coefficient ring over
+\(\mathbb Z\), and hence is compatible with arbitrary base change.
+
+The square-chart scalar and the pairwise-coprime regularity criterion are
+classical antecedents. The content recorded by Theorem 4.1 is their simultaneous
+non-monic affine lift: it specifies every complementary minor, the matching
+torus Plücker coordinate, and the orientation in one universal integral
+identity. This exact packaging is used as the structural bridge to the
+character-lattice calculation; it is not presented as a new resultant
+determinant in isolation.
+
+**Proof.** We induct on \(k\). For \(k=2\), the self-contained
+two-factor argument in Appendix E gives
+
+\[
+ p_{\{i\}}(Dm_{d_1,d_2})
+ =(-1)^{d_1(d_2+1)}
+   \operatorname{Res}(A_1,A_2)K_i.
+\]
+
+The proposed exponent differs from \(d_1(d_2+1)\) by
+\(\binom32+1=4\), so the signs agree.
+
+Assume the theorem for \(k-1\) factors. Put
+
+\[
+ D'=d_1+\cdots+d_{k-1},\qquad B=A_1\cdots A_{k-1}.
+\]
+
+Factor multiplication as
+
+\[
+ \prod_{i=1}^kV_{d_i}
+ \xrightarrow{\;m_{d_1,\ldots,d_{k-1}}\times\mathrm{id}\;}
+ V_{D'}\times V_{d_k}
+ \xrightarrow{\;m_{D',d_k}\;}V_D.
+\]
+
+The inner Plücker scalar is
+
+\[
+ \varepsilon_{d_1,\ldots,d_{k-1}}
+ \prod_{1\le i<j<k}R_{ij}.
+\]
+
+The outer two-factor scalar is
+
+\[
+ (-1)^{D'(d_k+1)}\operatorname{Res}(B,A_k).
+\]
+
+Resultant multiplicativity in the fixed Sylvester convention gives the exact
+identity
+
+\[
+ \operatorname{Res}(B,A_k)=\prod_{i<k}R_{ik}.
+\]
+
+No permutation of factor blocks is made, so no additional resultant sign
+appears.
+
+For the first \(k-1\) factors, use the inherited kernel rows
+
+\[
+ \eta_b=(0,\ldots,A_b,\ldots,-A_{k-1},0),
+ \qquad b=1,\ldots,k-2.
+\]
+
+A lift of the outer kernel \((B,-A_k)\) is
+
+\[
+ \ell=(0,\ldots,0,A_{k-1},-A_k),
+\]
+
+because differentiating the inner product in the \(A_{k-1}\) scaling
+direction sends \(A_{k-1}\) to \(B\). The standard torus rows satisfy
+
+\[
+ \kappa_b=\eta_b+\ell\quad(1\le b\le k-2),
+ \qquad \kappa_{k-1}=\ell.
+\]
+
+The corresponding row-basis transformation is unitriangular and has
+determinant one. Lemma 3.1, with \(t_1=k-2\), therefore gives the parity
+recurrence
+
+\[
+ e_k\equiv e_{k-1}+D'(d_k+1)+(k-2)\pmod2.
+\]
+
+The closed exponent satisfies
+
+\[
+ E(d_1,\ldots,d_k)-E(d_1,\ldots,d_{k-1})
+ =D'(d_k+1)+k,
+\]
+
+and \(k\equiv k-2\pmod2\). The scalar resultants combine to
+\(\Delta_{\mathbf d}\), while the determinant-one row change gives the
+displayed standard kernel minors. This completes the induction. \(\square\)
+
+For three factors the sign can be written more compactly as
+
+\[
+ \varepsilon_{d_1,d_2,d_3}
+ =(-1)^{d_1(d_2+1)+(d_1+d_2)(d_3+1)+1}.
+\]
+
+Thus every two-column deletion satisfies
+
+\[
+ (-1)^{i+j}\det M_{\widehat{\{i,j\}}}
+ =\varepsilon_{d_1,d_2,d_3}R_{12}R_{13}R_{23}\det K_{\{i,j\}}.
+\]
+
+This is the first higher-rank case of the induction used in this paper.
+
+## 4.1 Classical rank criterion and scheme-theoretic refinement
+
+The coordinate identities yield the exact ideal equality
+
+\[
+ \boxed{
+ I_{D+1}(Dm_{\mathbf d})
+ =\Delta_{\mathbf d}I_{k-1}(K).
+ }
+\]
+
+On the locus where every factor is nonzero, \(K\) has row rank \(k-1\). On
+the pairwise-coprime locus, these rows are the entire kernel, consistently with
+the known monic multifactor rank criterion
+[@ChaperonLopezDeMedrano2009, Theorem 3]. To see this in the present affine
+coordinates, let a
+tangent vector \((H_1,\ldots,H_k)\) satisfy
+
+\[
+ \sum_{i=1}^kH_i\prod_{j\ne i}A_j=0.
+\]
+
+Reduce the equation modulo \(A_i\). Since \(A_i\) is coprime to
+\(\prod_{j\ne i}A_j\), it divides \(H_i\). Degree equality gives
+\(H_i=c_iA_i\) for a scalar \(c_i\). Substitution gives
+\(\sum_i c_i=0\), precisely the tangent equation of the product-one torus.
+
+The classical criterion identifies pairwise root collision as the generic
+rank-loss set. The ideal identity refines it in the universal affine
+coefficient ring by retaining every maximal minor. Each generic pairwise
+resultant is a primitive irreducible polynomial and the different \(R_{ij}\)
+are nonassociate [@Jouanolou1991]. At the height-one prime \((R_{ij})\), the
+\(K\)-minor obtained by choosing one fixed coefficient column from each of the
+first \(k-1\) factor blocks is a product of those coefficients and is not
+divisible by \(R_{ij}\); it is therefore a unit in the height-one
+localisation. All other resultants are units there, so the maximal-minor ideal
+has valuation one.
+
+The exact statement after base change is slightly different. Let
+\(A_{\mathbb Z}\) be the universal coefficient ring, let
+\(A_{\mathbb Z}\to B\) be any ring map, and put
+\(J_B=I_{k-1}(K_B)\). Polynomial base change gives unconditionally
+
+\[
+ I_{D+1}(Dm_{\mathbf d,B})=\Delta_{\mathbf d,B}J_B.
+\tag{4.4}
+\]
+
+If \(B\) is a Noetherian normal domain and \(\mathfrak p\) is height one,
+then \(B_{\mathfrak p}\) is a DVR and
+
+\[
+ v_{\mathfrak p}\!\left(I_{D+1}(Dm_{\mathbf d,B})\right)
+ =\sum_{e\in E(K_k)}v_{\mathfrak p}(R_{e,B})
+  +v_{\mathfrak p}(J_B),
+\tag{4.5}
+\]
+
+where the valuation of an ideal is the minimum valuation of its generators.
+Consequently the order is exactly one along \(\mathfrak p\) provided that
+
+1. \(v_{\mathfrak p}(R_{ij,B})=1\);
+2. every \(R_{e,B}\) with \(e\ne ij\) is a unit at \(\mathfrak p\); and
+3. some maximal \(K_B\)-minor is a unit there.
+
+Equivalently, if a prime effective Cartier divisor has local equation \(s\),
+the same conclusion holds when the pulled-back \(R_{ij}=us\) for a unit
+\(u\), all other resultants and some maximal \(K\)-minor are units at its
+generic point. A ramified pullback \(R_{ij}=us^m\) contributes order \(m\),
+even when the underlying component is reduced. Second collisions and
+torus-rank defects contribute the additional terms visible in (4.5).
+Intersections and zero-factor strata can therefore carry extra scheme
+structure through \(J_B\). The theorem does not assert that the determinantal
+ideal is globally principal on the affine source.
+
+**Remark 4.2.** The first power of each pairwise resultant also follows from
+multidegree bookkeeping once divisibility and the kernel tensor are known. The
+induction is stronger: it fixes the complete vector and its orientation without
+an irreducibility or generic-divisor argument.
+
+# 5. Multi-border contraction
+
+Let \(g_1,\ldots,g_t\) be polynomials in the source coefficients, and let
+\(G\) be their \(t\times N\) gradient matrix,
+
+\[
+ G_{aj}=\frac{\partial g_a}{\partial x_j}.
+\]
+
+The torus vector fields associated with the rows of \(K\) are
+
+\[
+ \delta_b=\sum_{j=0}^{N-1}K_{bj}\frac{\partial}{\partial x_j},
+ \qquad b=1,\ldots,t.
+\]
+
+Thus \((KG^{\mathsf T})_{ba}=\delta_bg_a\).
+
+**Corollary 5.1 (multi-border contraction).** With the multiplication rows
+followed by the gradient rows in the order \(g_1,\ldots,g_t\),
+
+\[
+ \boxed{
+ \det\begin{pmatrix}M\\G\end{pmatrix}
+ =(-1)^{nt+\binom t2}\varepsilon_{\mathbf d}
+   \Delta_{\mathbf d}\det(\delta_bg_a)_{a,b=1}^t.
+ }
+\]
+
+**Proof.** Expand the determinant along the first \(n\) rows. If \(I\) is the
+set of \(t\) columns assigned to the gradient block, the corresponding term is
+the product of \(\det M_{\widehat I}\) and \(\det G_I\), times the Laplace
+sign. Substitution of
+\(p_I(M)=(-1)^{\sum I}\det M_{\widehat I}\) cancels the part of the Laplace
+sign depending on \(I\). The remaining parity is
+\(nt+\binom t2\). Theorem 4.1 then gives
+
+\[
+ (-1)^{nt+\binom t2}\varepsilon_{\mathbf d}\Delta_{\mathbf d}
+ \sum_{|I|=t}\det K_I\det G_I.
+\]
+
+Cauchy--Binet identifies the sum with
+\(\det(KG^{\mathsf T})\). Transposing this final \(t\times t\) matrix does not
+change its determinant, and its entries are the displayed vertical
+derivatives. \(\square\)
+
+Suppose now that each \(g_a\) is a \(T\)-semi-invariant. Relative to the
+cocharacter basis \(e_b-e_k\), let its integer character be the \(a\)-th row of
+\(W\). Then
+
+\[
+ \delta_bg_a=W_{ab}g_a,
+\]
+
+so the vertical matrix is \(\operatorname{diag}(g_1,\ldots,g_t)W\).
+
+**Corollary 5.2 (character determinant).**
+
+\[
+ \boxed{
+ \det D(m_{\mathbf d},g_1,\ldots,g_t)
+ =(-1)^{nt+\binom t2}\varepsilon_{\mathbf d}
+   \Delta_{\mathbf d}\det(W)\prod_{a=1}^tg_a.
+ }
+\]
+
+For \(k=2\), \(W\) has one entry. If \(g\) has bidegree \((p,q)\), that
+entry is \(p-q\). The degree-difference theorem is therefore exactly the
+rank-one case of the character determinant.
+
+Corollary 5.2 separates two obstructions. The collision factor \(\Delta\)
+records additional kernel directions caused by common roots. The integer
+\(\det W\) records whether the chosen borders recover the generic torus
+directions. Even when \(\det W\ne0\), the collision divisor remains.
+
+# 6. Resultant-character minors via weighted signless incidence
+
+## 6.1 Edge characters
+
+Under factor scaling, the pairwise resultant transforms as
+
+\[
+ R_{ij}(\lambda_iA_i,\lambda_jA_j)
+ =\lambda_i^{d_j}\lambda_j^{d_i}R_{ij}(A_i,A_j).
+\]
+
+On the cocharacter lattice
+
+\[
+ X_*(T)=\{u=(u_1,\ldots,u_k)\in\mathbb Z^k:\sum_i u_i=0\},
+\]
+
+the edge \(ij\) therefore defines
+
+\[
+ \chi_{ij}(u)=d_ju_i+d_iu_j.
+\]
+
+Use coordinates \(u_1,\ldots,u_{k-1}\) and eliminate
+\(u_k=-\sum_{b<k}u_b\). For a set \(H\) of \(k-1\) edges, let \(W_H\) be
+the resulting square character matrix.
+
+The graph associated with \(H\) need not be connected. Let
+\(\deg_H(i)\) denote the valence of vertex \(i\). A connected component is
+*odd unicyclic* if its number of edges equals its number of vertices and its
+unique cycle has odd length.
+
+## 6.2 Signed-graphic reduction and graph minors
+
+Once the edge characters are written in these coordinates, their maximal-minor
+calculation is a degree-weighted specialization of classical signless-incidence
+minor theory. Up to transpose and edge-orientation conventions, the relevant
+matrix is the signed incidence matrix of the all-negative signed graph
+\(-H\). In that language, balance is bipartiteness, the rank defect counts
+bipartite components, and an unbalanced unicyclic component contributes a
+factor two. These support, rank, and power-of-two facts are classical
+[@Zaslavsky1982, sec. 7D, Corollaries 7D.1 and 7D.3(d),(j), and sec. 8A,
+Lemmas 8A.2--8A.3; @Zaslavsky1983Erratum]. We do not use the uncorrected
+wording of Corollary 7D.3(g). The theorem below records the
+factorisation-specific cross-degree transformation and the evaluation of the
+appended degree row; it makes no claim to a new signed-incidence
+classification.
+
+**Theorem 6.1 (resultant-character minor formula).** The determinant
+\(\det W_H\) can be nonzero only when \(H\) has exactly one tree component and
+every other component is odd unicyclic. Suppose this condition holds, let
+\(c\) be the number of components, and let \(P\sqcup Q\) be the bipartition of
+the tree component. Then
+
+\[
+ \boxed{
+ |\det W_H|
+ =2^{c-1}
+ \left|\sum_{i\in P}d_i-\sum_{j\in Q}d_j\right|
+ \prod_{i=1}^kd_i^{\deg_H(i)-1}.
+ }
+\]
+
+The right-hand side is integral. When the tree component is an isolated
+vertex, use the bipartition \(P=\{i\},Q=\varnothing\); its degree balance
+\(d_i\) cancels the apparent exponent \(-1\).
+Within the stated component pattern, the determinant is nonzero exactly when
+the tree component has nonzero bipartite degree balance.
+
+**Proof.** Before eliminating \(u_k\), form the \((k-1)\times k\) matrix
+\(C_H\) whose edge \(ij\) row has entry \(d_j\) in column \(i\), entry
+\(d_i\) in column \(j\), and zero elsewhere. Append a last row
+\((1,\ldots,1)\). Let \(S\in\operatorname{GL}_k(\mathbb Z)\) have columns
+\(e_1-e_k,\ldots,e_{k-1}-e_k,e_k\). Its determinant is one, and
+
+\[
+ \begin{pmatrix}C_H\\ \mathbf 1^{\mathsf T}\end{pmatrix}S
+ =\begin{pmatrix}W_H&*\\0&1\end{pmatrix}.
+\]
+
+Thus the absolute determinant of the augmented matrix is exactly
+\(|\det W_H|\); in particular, eliminating the torus constraint introduces no
+hidden factor of \(k\).
+
+Multiply column \(i\) by \(d_i\). The edge \(ij\) row now has the common
+factor \(d_id_j\), with a one in each endpoint column after that factor is
+removed. The last row becomes \((d_1,\ldots,d_k)\). Comparing determinants
+before cancelling any factor gives the integral identity
+
+\[
+ \left(\prod_i d_i\right)|\det W_H|
+ =\left(\prod_i d_i^{\deg_H(i)}\right)
+ \left|
+ \det\begin{pmatrix}
+ B_H\\ d_1&\cdots&d_k
+ \end{pmatrix}
+ \right|.
+\tag{6.1}
+\]
+
+If every vertex is incident to an edge, cancellation gives
+
+\[
+ |\det W_H|
+ =\left(\prod_{i=1}^kd_i^{\deg_H(i)-1}\right)
+ \left|
+ \det\begin{pmatrix}
+ B_H\\ d_1&\cdots&d_k
+ \end{pmatrix}
+ \right|,
+\]
+
+where \(B_H\) is the unoriented edge--vertex incidence matrix. If the unique
+tree component is an isolated vertex \(i\), the appended determinant in
+(6.1) contains the factor \(d_i\); cancelling that factor first gives the
+same displayed formula with no negative exponent. Thus no division by a
+degree is used to establish integrality.
+
+Reorder rows and columns by connected component. A tree component on \(v\)
+vertices supplies \(v-1\) independent incidence rows. Appending the restricted
+degree row produces determinant, up to sign,
+
+\[
+ \sum_{i\in P}d_i-\sum_{j\in Q}d_j,
+\]
+
+because the signed bipartition vector spans the kernel of its incidence rows.
+An odd-unicyclic component has a square incidence matrix of absolute
+determinant two. An even-unicyclic component is singular. A component with
+more than one independent cycle produces row dependence in a square maximal
+minor, while two tree components leave more than one missing incidence row for
+the single degree border. Since \(H\) has \(k-1\) edges, nonzero determinant
+therefore requires one tree component and only odd-unicyclic remaining
+components. Multiplying the component determinants proves the formula.
+\(\square\)
+
+The incidence facts used in the last paragraph are classical. Grossman,
+Kulkarni, and Schochetman determine the minors and Smith normal form of
+unoriented graph incidence matrices [@GrossmanKulkarniSchochetman1995]. The
+odd-unicyclic invertibility criterion also appears in later inverse formulas
+[@HessertMallik2023]. The factorisation-specific content is the weighted
+transformation from resultant characters to that incidence matrix.
+
+**Corollary 6.2 (tree formula).** If \(H=T\) is a spanning tree, then
+
+\[
+ \boxed{
+ |\det W_T|
+ =\left|\sum_{i\in P}d_i-\sum_{j\in Q}d_j\right|
+  \prod_i d_i^{\deg_T(i)-1}.
+ }
+\]
+
+For a star centred at vertex \(k\),
+
+\[
+ |\det W_T|
+ =d_k^{k-2}\left|d_k-\sum_{i<k}d_i\right|.
+\]
+
+For three equal linear factors, every star has determinant one. Equal degrees
+therefore do not force degeneration when the torus rank is greater than one.
+This contrasts with the two-factor resultant character, whose single weight is
+the degree difference.
+
+## 6.3 A three-linear-factor example
+
+Let \(d_1=d_2=d_3=1\) and write
+\(A_i=x_iX+y_iY\). If
+
+\[
+ A_jA_\ell=p_iX^2+q_iXY+r_iY^2,
+ \qquad \{i,j,\ell\}=\{1,2,3\},
+\]
+
+then, in block-major source order
+\((x_1,y_1,x_2,y_2,x_3,y_3)\), the multiplication differential and
+ordered torus kernel are
+
+\[
+ M=
+ \begin{pmatrix}
+ p_1&0&p_2&0&p_3&0\\
+ q_1&p_1&q_2&p_2&q_3&p_3\\
+ r_1&q_1&r_2&q_2&r_3&q_3\\
+ 0&r_1&0&r_2&0&r_3
+ \end{pmatrix},
+ \qquad
+ K=
+ \begin{pmatrix}
+ x_1&y_1&0&0&-x_3&-y_3\\
+ 0&0&x_2&y_2&-x_3&-y_3
+ \end{pmatrix}.
+\]
+
+Here \(\varepsilon_{(1,1,1)}=-1\). For example, deleting the
+\(x_1\)- and \(x_2\)-columns gives
+
+\[
+ p_{\{0,2\}}(M)
+ =-R_{12}R_{13}R_{23}\det
+ \begin{pmatrix}x_1&0\\0&x_2\end{pmatrix}
+ =-x_1x_2R_{12}R_{13}R_{23}.
+\]
+
+Choose the path normalising functions \((R_{12},R_{23})\). In the cocharacter basis
+\((e_1-e_3,e_2-e_3)\), their character matrix is
+
+\[
+ W_{\{12,23\}}=
+ \begin{pmatrix}1&1\\-1&0\end{pmatrix},
+ \qquad \det W_{\{12,23\}}=1.
+\]
+
+The full edge-character matrix is
+
+\[
+ W_E=\begin{pmatrix}1&1\\0&-1\\-1&0\end{pmatrix},
+\]
+
+which has Smith form \(\operatorname{diag}(1,1)\). Thus two resultant
+normalising functions remove the two-dimensional scaling torus without a residual finite
+group scheme. The collision factor \(R_{12}R_{13}R_{23}\) nevertheless remains
+in the bordered Jacobian. Replacing the degrees by \((1,1,2)\) changes the same
+path matrix to
+\(\left(\begin{smallmatrix}1&1\\-1&1\end{smallmatrix}\right)\), of determinant
+two; the corresponding residual group scheme is \(\mu_2\), nonreduced in
+characteristic two.
+
+# 7. Exact Smith invariants of the unit-character lattice
+
+## 7.1 Regular units and arithmetic-matroid multiplicity
+
+Let \(A_{\mathbb Z}\) be the universal coefficient ring and put
+
+\[
+ U=D(\Delta_{\mathbf d})\subset\operatorname{Spec}A_{\mathbb Z}.
+\]
+
+The pairwise resultants are primitive irreducibles and are pairwise
+nonassociate in the UFD \(A_{\mathbb Z}\). Hence
+
+\[
+ \boxed{
+ \Gamma(U,\mathcal O_U)^\times
+ =\left\{\varepsilon\prod_{i<j}R_{ij}^{n_{ij}}:
+ \varepsilon\in\{\pm1\},\ n_{ij}\in\mathbb Z\right\}.
+ }
+\tag{7.1}
+\]
+
+Indeed, if \(f/\Delta^N\) and \(g/\Delta^M\) are inverse, then
+\(fg=\Delta^{N+M}\), and unique factorisation forces every irreducible factor
+of \(f\) and \(g\) to be one of the \(R_{ij}\). Valuations at the distinct
+height-one primes \((R_{ij})\) give uniqueness. Over a field, the same proof
+replaces \(\{\pm1\}\) by the field's multiplicative group.
+
+Thus all regular units on \(U\) are semi-invariant Laurent resultant
+monomials. Their characters form exactly the row lattice \(L\) of the complete
+edge-character matrix \(W_E\). This is the intrinsic character lattice of
+regular units on the fixed pairwise-coprime open \(U\). It is not the lattice
+of every polynomial semi-invariant, and it can enlarge after deleting further
+divisors. We call
+
+\[
+ D\bigl(X^*(T)/L\bigr)
+\]
+
+the **unit-character residual group of \(U\)**.
+
+Set
+
+\[
+ g=\gcd(d_1,\ldots,d_k),\qquad e_i=d_i/g,
+ \qquad M=X^*(T)=\mathbb Z^k/\mathbb Z\mathbf1.
+\]
+
+For the primitive vector \(\mathbf e\), let
+
+\[
+ \chi_{ij}=[e_j\varepsilon_i+e_i\varepsilon_j]\in M,
+ \qquad C_{\mathbf e}=M/\langle\chi_{ij}:i<j\rangle,
+\]
+
+and define
+
+\[
+ h(\mathbf e)=
+ \gcd_{\substack{H\subset E(K_k)\\|H|=k-1}}
+ |\det W_H(\mathbf e)|.
+\tag{7.2}
+\]
+
+This gcd is standard representable arithmetic-matroid data. For a sublist
+\(S\) of the primitive edge characters, put
+
+\[
+ m(S)=
+ [M\cap\operatorname{span}_{\mathbb R}(S):\langle S\rangle_{\mathbb Z}].
+\]
+
+Then \(h(\mathbf e)=m(E)\), while a full-rank square sublist has
+\(m(H)=|\det W_H|\). The equality between \(m(E)\) and the gcd of basis
+multiplicities is the standard GCD rule
+[@Moci2012, sec. 2.2; @DAdderioMoci2013, secs. 1.4--1.5]. For the original
+list \(\mathbf d=g\mathbf e\), the full-list multiplicity is
+\(g^{k-1}h(\mathbf e)\), not \(h(\mathbf e)\).
+
+## 7.2 A one-generator local presentation
+
+Write \(x_i\in M\) for the image of \(\varepsilon_i\), so that
+\(\sum_i x_i=0\). The edge relations are
+
+\[
+ q_{ij}=e_jx_i+e_ix_j.
+\]
+
+For a prime \(p\), let \(R_p=\mathbb Z_{(p)}\) and use the convention
+\(v_p(0)=\infty\).
+
+**Theorem 7.1 (exact local Smith presentation).** Let \(k\ge3\), let
+\(\mathbf e\) be primitive, and choose an index \(a\) with \(p\nmid e_a\).
+Put
+
+\[
+ D_a=e_a-\sum_{i\ne a}e_i
+\]
+
+and
+
+\[
+ I_{p,a}=
+ (D_a,\;2e_ie_j:i<j,\ i,j\ne a)R_p.
+\]
+
+Then \(1\mapsto x_a\) induces an isomorphism
+
+\[
+ \boxed{C_{\mathbf e}\otimes R_p\cong R_p/I_{p,a}.}
+\tag{7.3}
+\]
+
+In particular, the presentation is valid for \(p=2\), for \(k=3\), and
+when \(D_a=0\).
+
+**Proof.** Primitivity supplies a \(p\)-unit \(e_a\). Over \(R_p\), each
+star relation
+
+\[
+ e_ix_a+e_ax_i=0
+\]
+
+eliminates \(x_i=-(e_i/e_a)x_a\). The ambient relation becomes
+\((D_a/e_a)x_a=0\), which is equivalent to \(D_ax_a=0\). Each remaining
+edge \(ij\), with \(i,j\ne a\), becomes
+
+\[
+ -\frac{2e_ie_j}{e_a}x_a=0,
+\]
+
+equivalent to \(2e_ie_jx_a=0\). These are all generators and relations, so
+the Tietze elimination proves the module isomorphism, not merely an equality
+of orders. No division by \(2\), \(D_a\), or a nonunit degree occurs.
+\(\square\)
+
+The ideal in (7.3) is independent of the admissible pivot: two such
+presentations are the annihilator of the same canonical local module, and the
+edge between the pivots changes the displayed cyclic generator by a unit.
+
+**Corollary 7.2 (all local valuations).** For any \(p\)-unit pivot \(a\),
+
+\[
+ \boxed{
+ v_p(h(\mathbf e))=
+ m_p(\mathbf e):=
+ \min\left(
+ v_p(D_a),
+ \min_{\substack{i<j\\i,j\ne a}}
+ [v_p(2)+v_p(e_i)+v_p(e_j)]
+ \right).
+ }
+\tag{7.4}
+\]
+
+Moreover,
+
+\[
+ C_{\mathbf e}\otimes R_p\cong R_p/(p^{m_p(\mathbf e)}),
+ \qquad
+ C_{\mathbf e}\cong\mathbb Z/h(\mathbf e)\mathbb Z.
+\tag{7.5}
+\]
+
+**Proof.** Every ideal in the DVR \(R_p\) is generated by an element of least
+valuation, which gives the first isomorphism. The zeroth Fitting ideal of the
+local cokernel is both \(I_{p,a}\) and the localisation of the ideal generated
+by all maximal minors. Its positive generator over \(\mathbb Z\) is
+\(h(\mathbf e)\), proving (7.4). The local presentation is torsion, hence
+\(C_{\mathbf e}\otimes\mathbb Q=0\); the finitely generated abelian group
+\(C_{\mathbf e}\) is therefore finite. Its primary localisations are cyclic,
+and their direct sum has pairwise coprime orders, so the global group is cyclic
+of order \(h\). \(\square\)
+
+This quotient module is the full-set module of the represented matroid over
+\(\mathbb Z\). Arithmetic multiplicity remembers only its order; the
+matroid-over-a-ring and DVR frameworks retain its isomorphism type and local
+invariant sequence [@FinkMoci2016, Definition 2.1, eq. (2.1), secs. 5 and
+6.1]. Theorem 7.1 is an explicit computation of that standard object for this
+cross-weighted factorisation list.
+
+## 7.3 Closed formula and tree-gcd equality
+
+For an odd prime \(p\), (7.4) is nonzero precisely when exactly two degrees,
+say \(e_a,e_b\), are \(p\)-units and
+\(e_a\equiv e_b\pmod p\). In that case
+
+\[
+ m_p(\mathbf e)=
+ \min\left(v_p(e_a-e_b),
+            \min_{c\notin\{a,b\}}v_p(e_c)\right).
+\tag{7.6}
+\]
+
+For \(p=2\), let \(s\) be the number of odd \(e_i\). Primitivity gives
+\(s\ge1\), and
+
+\[
+ m_2(\mathbf e)=
+ \begin{cases}
+ 0,&s\text{ odd},\\[1mm]
+ 1,&s\ge4\text{ and }s\text{ even},\\[1mm]
+ \min\left(v_2(D_a),1+\min_{c\notin\{a,b\}}v_2(e_c)\right),&s=2,
+ \end{cases}
+\tag{7.7}
+\]
+
+where \(a,b\) are the two odd indices in the last line. Swapping \(a\) and
+\(b\) does not change the truncated valuation: if
+\(E=\sum_{c\notin\{a,b\}}e_c\) and
+\(q=\min_cv_2(e_c)\), then \(D_a+D_b=-2E\) is divisible by
+\(2^{q+1}\).
+
+The primewise description assembles without factoring a maximal minor. Define
+
+\[
+ G_{ab}=\gcd\{e_c:c\notin\{a,b\}\},\qquad
+ Q_{ab}=\gcd(|e_a-e_b|,G_{ab}),
+\]
+
+and let \(Q_{ab}^{\mathrm{odd}}=Q_{ab}/2^{v_2(Q_{ab})}\). Put
+
+\[
+ \eta_2(\mathbf e)=
+ \begin{cases}
+ 0,&s\text{ odd},\\
+ 1,&s\ge4\text{ and }s\text{ even},\\
+ \min\bigl(v_2(D_a),1+v_2(G_{ab})\bigr),&s=2.
+ \end{cases}
+\]
+
+**Theorem 7.3 (closed global index).** One has
+
+\[
+ \boxed{
+ h(\mathbf e)=2^{\eta_2(\mathbf e)}
+ \prod_{1\le a<b\le k}Q_{ab}^{\mathrm{odd}}.
+ }
+\tag{7.8}
+\]
+
+The odd factors in the product are pairwise coprime. Consequently
+\(h(\mathbf e)\) is computable with \(O(k^2)\) integer gcd operations.
+For each fixed \(a\), prefix and suffix gcds of the other \(k-1\) degrees
+compute every excluded-pair gcd \(G_{ab}\) in \(O(k)\) gcd operations;
+repeating over \(a\) gives the stated bound. This is an arithmetic-operation
+count, not a unit-cost bit-complexity claim.
+
+**Proof.** If an odd prime divides \(Q_{ab}\), it divides every degree outside
+\(\{a,b\}\) and divides \(e_a-e_b\). It cannot divide \(e_a\) or \(e_b\),
+else it would divide every primitive degree. Thus \(\{a,b\}\) is exactly the
+pair of unit indices, and (7.6) gives
+\(v_p(h)=v_p(Q_{ab})\). Conversely every exceptional odd prime divides that
+\(Q_{ab}\). The unit pair is unique, so no odd prime divides two different
+\(Q_{ab}\). Formula (7.7) supplies the remaining exponent at two. Equality
+follows prime by prime. \(\square\)
+
+The full-list gcd is even more economical than its definition suggests.
+
+**Theorem 7.4 (spanning trees determine the full index).** If
+
+\[
+ \tau(\mathbf e)=
+ \gcd_{T\text{ spanning tree of }K_k}|\det W_T(\mathbf e)|,
+\]
+
+then \(\tau(\mathbf e)=h(\mathbf e)\). After localising at \(p\), choose any
+\(p\)-unit pivot \(a\). The star centred at \(a\) and its associated
+\(\binom{k-1}{2}\) bent stars generate the full maximal-minor ideal.
+
+**Proof.** By the spanning-tree determinant formula in Corollary 6.2, after
+choosing a \(p\)-unit vertex \(a\), the star centred at \(a\) has
+determinant, up to sign,
+
+\[
+ e_a^{k-2}D_a,
+\]
+
+so it generates \(D_a\) up to a unit in \(R_p\). For distinct
+\(i,j\ne a\), remove \(aj\) from the star and add \(ij\). The resulting
+bent star has determinant
+
+\[
+ \pm e_a^{k-3}e_i(D_a+2e_j).
+\]
+
+Subtracting \(e_iD_a\) yields \(2e_ie_j\). Hence these tree minors contain
+the ideal \(I_{p,a}\). Conversely every tree determinant is a maximal minor,
+and the ideal of all maximal minors is
+\(\operatorname{Fitt}_0(C_{\mathbf e}\otimes R_p)=I_{p,a}\). The two ideals
+therefore agree at every prime, so their positive integer gcds agree.
+\(\square\)
+
+Odd-unicyclic bases remain relevant as individual arithmetic-matroid
+multiplicities and square-chart determinants. Theorem 7.4 says only that they
+do not lower the single full-list saturation index.
+
+## 7.4 Nonprimitive Smith form and residual group scheme
+
+Because \(W_E(\mathbf d)=gW_E(\mathbf e)\), the primitive calculation gives
+the complete answer.
+
+**Corollary 7.5 (complete Smith form).** For \(k\ge3\),
+
+\[
+ \boxed{
+ \operatorname{SNF}(W_E(\mathbf d))
+ =\operatorname{diag}
+ \bigl(\underbrace{g,\ldots,g}_{k-2},g h(\mathbf e)\bigr).
+ }
+\tag{7.9}
+\]
+
+Thus
+
+\[
+ X^*(T)/L
+ \cong(\mathbb Z/g\mathbb Z)^{k-2}
+ \oplus\mathbb Z/(g h(\mathbf e))\mathbb Z.
+\tag{7.10}
+\]
+
+Indeed, the unimodular matrices that diagonalise the primitive matrix put its
+scalar multiple into (7.9), which already satisfies Smith divisibility.
+
+Over \(\operatorname{Spec}\mathbb Z\), the unit-character residual group is
+noncanonically
+
+\[
+ \boxed{
+ D(X^*(T)/L)\cong
+ \mu_g^{\,k-2}\times\mu_{g h(\mathbf e)}.
+ }
+\tag{7.11}
+\]
+
+It is finite locally free of rank \(g^{k-1}h(\mathbf e)\). Over a field of
+characteristic \(p>0\), write
+\(g=p^\gamma g'\), \(h=p^m h'\), with \(p\nmid g'h'\). Its connected
+diagonalizable factor and prime-to-\(p\) étale direct factor are
+
+\[
+ \mu_{p^\gamma}^{\,k-2}\times\mu_{p^{\gamma+m}},
+ \qquad
+ \mu_{g'}^{\,k-2}\times\mu_{g'h'},
+\tag{7.12}
+\]
+
+respectively. Their ranks are \(p^{\gamma(k-1)+m}\) and
+\((g')^{k-1}h'\). Thus the scheme is étale exactly when \(p\nmid gh\), and
+the number of geometric points in an algebraic closure is
+\((g')^{k-1}h'\), not its total scheme rank in bad characteristic.
+
+For comparison with toric arrangements, over \(\mathbb C\) the standard
+identity \(m(S)=\#\pi_0(\bigcap_{\chi\in S}\ker\chi)\) gives exactly the same
+full-list order [@Moci2012, Lemma 5.4; @DAdderioMoci2013, Lemma 4.1]. The
+group-scheme statement (7.11) is the characteristic-sensitive refinement.
+
+The rectangular all-edge character morphism
+
+\[
+ T\longrightarrow(\mathbb G_m)^{E(K_k)}
+\]
+
+has scheme-theoretic image \(D(L)\). The induced map
+\(T\to D(L)\) is finite locally free of degree
+\([X^*(T):L]=g^{k-1}h\), with kernel (7.11). On coordinate rings this is the
+free inclusion \(\mathbb Z[L]\subset\mathbb Z[X^*(T)]\), with a basis given
+by coset representatives. The degree is the degree onto this image, not a
+claim about an unlabelled rectangular target containing every root-partition
+branch.
+
+## 7.5 Diagnostic examples
+
+| Degrees | \(h(\mathbf e)\) | Smith form | Diagnostic point |
+|---|---:|---|---|
+| \((1,1,1)\) | \(1\) | \(\operatorname{diag}(1,1)\) | Saturated full list |
+| \((1,1,3)\) | \(3\) | \(\operatorname{diag}(1,3)\) | Odd bad prime \(3\) |
+| \((1,1,9)\) | \(9\) | \(\operatorname{diag}(1,9)\) | \(v_3(h)=2\) |
+| \((1,1,4)\) | \(4\) | \(\operatorname{diag}(1,4)\) | \(v_2(h)=2\) |
+| \((1,5,4)\) | \(8\) | \(\operatorname{diag}(1,8)\) | \(v_2(h)=3\) |
+| \((1,2,2)\) | \(1\) | \(\operatorname{diag}(1,1)\) | Full list saturated; square edge minors have absolute values \(3,2,2\) |
+| \((1,1,1,1)\) | \(2\) | \(\operatorname{diag}(1,1,2)\) | Four odd entries give exactly one factor of \(2\) |
+| \((2,2,18)=2(1,1,9)\) | \(9\) | \(\operatorname{diag}(2,18)\) | Nonprimitive content and odd valuation |
+
+The families
+
+\[
+ h(1,1,N)=N,
+ \qquad
+ h(1,1+2^q,2^q)=2^{q+1}\quad(q\ge1)
+\tag{7.13}
+\]
+
+realise arbitrary higher odd and two-adic valuations. The vector
+\((1,2,2)\) separates full-list saturation from square edge charts: no two
+individual resultant characters form a unimodular basis, despite \(h=1\).
+
+# 8. Generic-degree synthesis and étaleness
+
+## 8.1 Square semi-invariant charts
+
+Let \(\Bbbk\) be an algebraically closed field of characteristic \(p\ge0\).
+A polynomial \(g\) is a \(T\)-semi-invariant of character \(\chi\) if
+\(g(\lambda\cdot A)=\chi(\lambda)g(A)\). Suppose
+\(g_1,\ldots,g_t\) are nonzero semi-invariants whose character matrix
+\(W\in M_t(\mathbb Z)\) has nonzero determinant. Set
+
+\[
+ \Phi=(m_{\mathbf d},g_1,\ldots,g_t):
+ \prod_iV_{d_i}\longrightarrow V_D\times\mathbb A^t
+\]
+
+and
+
+\[
+ X^\circ=D\!\left(\Delta_{\mathbf d}\prod_{a=1}^tg_a\right).
+\]
+
+Here the generic scheme degree means the degree of the induced finite
+extension of function fields. The proof below constructs a dense target open
+on which the map is finite locally free, so this degree is also the constant
+scheme length of every fibre over that open.
+
+The following statement combines the classical labelled root-partition degree
+with the scheme order of the torus isogeny defined by \(W\). Its role is to
+translate the character-lattice data into the geometry of a normalised
+factorisation chart.
+
+**Theorem 8.1 (finite normalised factorisation cover).** Fix the labelled
+degrees, let \(\Bbbk\) be algebraically closed, and let
+\(g_1,\ldots,g_t\) be nonzero semi-invariants with a square character matrix
+\(W\) of nonzero determinant. There is a dense open
+\(V_D^{\mathrm{good}}\subset V_D\) such that the restriction of \(\Phi\) over
+\(V_D^{\mathrm{good}}\times(\mathbb G_m)^t\) is finite locally free. In
+particular, \(\Phi\) is dominant and generically finite, with
+
+\[
+ \boxed{
+ \deg_{\mathrm{gen}}\Phi
+ =|\det W|\frac{D!}{\prod_i d_i!}.
+ }
+\]
+
+If the Smith form of \(W\) is
+\(\operatorname{diag}(s_1,\ldots,s_t)\), then the torus part of each generic
+fibre is a translate of
+
+\[
+ \ker\chi_W\cong\prod_{i=1}^t\mu_{s_i}.
+\]
+
+It has scheme order \(|\det W|\). If \(p>0\), write
+\(s_i=p^{a_i}s_i'\) with \(p\nmid s_i'\). The generic separable degree is
+
+\[
+ \left(\prod_i s_i'\right)\frac{D!}{\prod_i d_i!},
+\]
+
+the number of geometric points in an algebraic closure of a generic fibre is
+the same number, and the inseparable factor is
+\(p^{\sum_i a_i}=p^{v_p(\det W)}\). On \(X^\circ\), the map is étale
+exactly when \(p\nmid\det W\), with the characteristic-zero convention.
+
+**Proof.** Let \(V_D^{\mathrm{sf}}\) be the open set of nonzero binary forms
+with \(D\) distinct geometric roots, and define
+
+\[
+ Z^{\mathrm{sf}}
+ =V_D^{\mathrm{sf}}\mathop{\times}_{\mathbb P(V_D)}
+   \prod_{i=1}^k\mathbb P(V_{d_i}),
+\]
+
+where the second map is projective multiplication and the projective source
+is restricted to the inverse image of the squarefree locus. The projection
+\(\pi:Z^{\mathrm{sf}}\to V_D^{\mathrm{sf}}\) is the finite étale
+root-partition cover: a point above
+\(F\in V_D^{\mathrm{sf}}\) is a projective factorisation obtained by
+partitioning the roots of \(F\) into labelled blocks of sizes
+\((d_1,\ldots,d_k)\). Its degree is
+
+\[
+ \nu=\frac{D!}{\prod_i d_i!}.
+\tag{8.1}
+\]
+
+This is also the standard projective multiplication-fibre description
+[@BreidingKohnSturmfels2024, sec. 10.2, Proposition 10.7 and Corollary 10.8, p. 130]. Finite étaleness follows from the free symmetric-group action on
+ordered distinct-root configurations; equivalently, projective
+multiplication is finite and its differential is an isomorphism here because
+the affine differential has only the \(T\)-tangent kernel
+[@ChaperonLopezDeMedrano2009, Theorem 3]. Scheme-theoretically, the free
+actions of the relevant constant symmetric groups have scheme quotients and
+give fppf torsors by [@StacksProject2026, tag 07S7]; after base change along
+the torsor they are disjoint unions of copies of the base. Finite locally free
+degree and étaleness descend fpqc-locally
+[@StacksProject2026, tags 02VO and 02VN].
+
+Put \(U^{\mathrm{sf}}=m_{\mathbf d}^{-1}(V_D^{\mathrm{sf}})\). The map
+
+\[
+ q:U^{\mathrm{sf}}\longrightarrow Z^{\mathrm{sf}},\qquad
+ (A_i)_i\longmapsto\left(\prod_iA_i,([A_i])_i\right),
+\]
+
+is a \(T\)-torsor: two affine tuples with the same product and projective
+factors differ by a unique product-one scaling. For every \(a\), the
+principal ideal \((g_a)\) is \(T\)-stable, so its zero subscheme descends
+along the fpqc torsor \(q\) to a closed subscheme
+\(Z_a\subset Z^{\mathrm{sf}}\)
+[@StacksProject2026, tags 04TW and 023T]. The dense open \(U^{\mathrm{sf}}\) of the
+affine source cannot be contained in the zero locus of the nonzero polynomial
+\(g_a\); faithful flatness therefore makes \(Z_a\) proper.
+
+Moreover, \(Z^{\mathrm{sf}}\) is irreducible: it is the nonzero
+tautological-line pullback over the irreducible squarefree open in
+\(\prod_i\mathbb P(V_{d_i})\). Hence
+\(\dim Z_a<\dim Z^{\mathrm{sf}}\). Since \(\pi\) is finite,
+\(\pi(Z_a)\) is a proper closed subset of \(V_D^{\mathrm{sf}}\). Thus
+
+\[
+ V_D^{\mathrm{good}}
+ =V_D^{\mathrm{sf}}\setminus\bigcup_{a=1}^t\pi(Z_a)
+\]
+
+is dense and open, and every \(g_a\) is nonzero on every factorisation branch
+above it.
+
+Write
+
+\[
+ B_0=V_D^{\mathrm{good}},\qquad
+ Z_0=\pi^{-1}(B_0),\qquad
+ P_0=q^{-1}(Z_0),\qquad
+ G=(\mathbb G_m)^t.
+\]
+
+Every \(g_a\) is invertible on \(P_0\), and equivariance gives a morphism
+\(g:P_0\to G\). Define
+
+\[
+ \theta=(q,g):P_0\longrightarrow Z_0\times G.
+\]
+
+Then the restricted normalised factorisation map factors as
+
+\[
+ \Phi_0=(m_{\mathbf d},g):P_0
+ \xrightarrow{\ \theta\ }Z_0\times G
+ \xrightarrow{\ \pi\times\mathrm{id}_G\ }B_0\times G.
+\tag{8.2}
+\]
+
+Base-change \(\theta\) by the fpqc cover
+\(q\times\mathrm{id}_G:P_0\times G\to Z_0\times G\). The torsor identity
+\(P_0\times_{Z_0}P_0\cong P_0\times T\) identifies the pullback with the
+Cartesian square
+
+\[
+\begin{array}{ccc}
+ P_0\times T&\xrightarrow{\ \beta\ }&P_0\times G\\[1mm]
+ \downarrow{a}&&\downarrow{q\times\mathrm{id}_G}\\[1mm]
+ P_0&\xrightarrow{\ \theta\ }&Z_0\times G,
+\end{array}
+\tag{8.3}
+\]
+
+where
+
+\[
+ a(x,\lambda)=\lambda x,
+ \qquad
+ \beta(x,\lambda)=\bigl(x,g(x)\chi_W(\lambda)\bigr).
+\]
+
+The square is Cartesian because two points in one \(q\)-fibre differ by a
+unique \(\lambda\in T\), and
+\(g(\lambda x)=\chi_W(\lambda)g(x)\). Smith normal form and torus
+automorphisms reduce \(\chi_W\) to
+
+\[
+ (z_1,\ldots,z_t)\longmapsto(z_1^{s_1},\ldots,z_t^{s_t}).
+\tag{8.4}
+\]
+
+On coordinate rings each power map is free of rank \(s_i\), with basis
+\(1,z_i,\ldots,z_i^{s_i-1}\). Hence \(\beta\) is finite locally free of
+rank \(|\det W|\). Finite local freeness and constant rank descend
+fpqc-locally [@StacksProject2026, tag 02VO], so \(\theta\) has the same rank.
+The second map in (8.2) is finite étale of rank \(\nu\); finite locally free
+morphisms are stable under composition [@StacksProject2026, tag 02K9]. Thus
+\(\Phi_0\) is finite locally free of rank \(\nu|\det W|\), proving total
+scheme degree without counting geometric points.
+
+For (8.4), the function-field extension in coordinate \(i\) has total degree
+\(s_i\), separable degree \(s_i'\), and inseparable degree \(p^{a_i}\).
+The root-partition cover is étale. Composition therefore gives the displayed
+total and separable degrees and the inseparable factor
+\(p^{\sum_i a_i}\). Scheme-theoretically,
+\(\ker\chi_W\cong\prod_i\mu_{s_i}\) has length \(\prod_i s_i\), while its
+geometric-point count is \(\prod_i s_i'\). Finally, Corollary 5.2 gives on
+\(X^\circ\)
+
+\[
+ \det D\Phi
+ =\pm\Delta_{\mathbf d}\det(W)\prod_ag_a.
+\]
+
+All factors except \(\det W\) are units there, so the Jacobian criterion gives
+the asserted étaleness condition; equivalently, étaleness is fpqc-local
+[@StacksProject2026, tag 02VN]. \(\square\)
+
+## 8.2 Full-unit, edge, and polynomial-monomial charts
+
+Choose a \(\mathbb Z\)-basis \(\ell_1,\ldots,\ell_t\) of the complete
+regular-unit character lattice \(L\). Expressing each \(\ell_a\) as an
+integral combination of edge characters produces Laurent units
+
+\[
+ u_a=\prod_{i<j}R_{ij}^{z_{a,ij}}\in\Gamma(U,\mathcal O_U)^\times.
+\]
+
+Their square character matrix has determinant
+\([X^*(T):L]=g^{k-1}h(\mathbf e)\). Theorem 8.1 therefore gives the
+Laurent-unit normalisation the generic degree
+
+\[
+ g^{k-1}h(\mathbf e)\frac{D!}{\prod_i d_i!}.
+\tag{8.5}
+\]
+
+This realises the full-list index on the pairwise-coprime open, but negative
+exponents need not extend across its boundary. By contrast, a set \(H\) of
+\(t\) individual resultants has torus degree
+\(|\det W_H|=m(H)\), while nonnegative products of resultants correspond to
+nonnegative integral combinations of the rows. Arbitrary polynomial
+semi-invariants form a still larger category and may require deletion of
+additional divisors before becoming units.
+
+The primitive vector \((1,2,2)\) makes the distinction concrete. In edge
+order \(12,13,23\),
+
+\[
+ W_E=
+ \begin{pmatrix}
+ 2&1\\1&-1\\-2&0
+ \end{pmatrix},
+\]
+
+whose maximal minors have absolute values \(3,2,2\). Hence \(h=1\), but no
+pair of individual resultants is unimodular. Nevertheless the nonnegative
+monomials
+
+\[
+ u_1=R_{12}R_{13}R_{23},\qquad u_2=R_{12}R_{23}
+\]
+
+have character matrix
+
+\[
+ \begin{pmatrix}1&1&1\\1&0&1\end{pmatrix}W_E=I_2.
+\tag{8.6}
+\]
+
+Here \(D=5\) and \(\nu=5!/(1!2!2!)=30\). Thus:
+
+| Normalising functions | Torus degree | Total generic degree |
+|---|---:|---:|
+| \((R_{12},R_{13})\) | \(3\) | \(90\) |
+| \((R_{12},R_{23})\) | \(2\) | \(60\) |
+| \((R_{13},R_{23})\) | \(2\) | \(60\) |
+| \((u_1,u_2)\) | \(1\) | \(30\) |
+
+The last chart is étale on \(D(\Delta)\) in every characteristic. It proves
+that full-list saturation need not be realised by an edge basis and that a
+polynomial monomial chart can outperform every edge basis. It does not prove
+that every saturated resultant-character semigroup has a nonnegative
+unimodular basis.
+
+For \(k=2\) and degrees \((1,2)\), a rank-one normalising semi-invariant of unit character
+determinant gives generic degree \(3\), the number of ways to choose one of
+three roots for the labelled linear factor. For three equal linear factors, a
+tree of resultant normalising functions can have \(|\det W|=1\), while the root-partition
+factor is \(3!=6\). Neither observation produces a polynomial Keller map:
+global affine-slice recognition is an additional requirement.
+
+# 9. Exact computational evidence
+
+The supplied programs test the formulas over exact integer polynomial rings.
+They do not use floating point or random sampling in their default tiers.
+Their purpose is to detect convention, sign, exponent, and implementation
+errors in the stated identities.
+
+The first multifactor implementation uses SymPy 1.14 and Berkowitz
+determinants. It constructs the coefficient differential directly from shifted
+products of complementary factors, constructs each pairwise Sylvester
+resultant independently, and compares every Plücker coordinate with the
+predicted torus minor. Its seven default degree vectors are
+
+\[
+ (1,1),\ (1,2),\ (1,1,1),\ (1,1,2),\ (1,2,1),\ (2,1,1),\
+ (1,1,1,1).
+\]
+
+These cases comprise 143 symbolic Plücker coordinates. Five deliberate
+mutations omit one resultant, square the collision product, reverse a kernel
+row, reverse the recursive sign, or perturb the multiplication differential.
+All are detected.
+
+The second implementation uses python-flint 0.9, multivariate integer
+polynomials, and fraction-free Bareiss determinants. It does not import the
+SymPy implementation. Its default tier checks 134 symbolic Plücker coordinates
+for three- and four-factor cases. It also computes the full square bordered
+Jacobian for the normalising functions \((R_{12},R_{23})\) at degrees \((1,1,1)\) and
+\((1,1,2)\), whose character determinants are respectively one and two. Four
+structural mutations are detected.
+
+A third program operates on exact integer character matrices. Through five
+vertices and degrees at most three, it checks 31,761 spanning-tree formulas,
+52,741 general graph-minor formulas, and 351 Smith-form/bad-prime cases. Four
+negative controls substitute total degree for bipartite balance, omit the
+odd-cycle factor two, omit the common gcd in the Smith form, or extrapolate the
+two-factor equal-degree collapse to three factors.
+
+A fourth Stage-4 program targets the strengthened Smith theorem. It constructs
+the complete character matrix independently, computes its Smith form over
+\(\mathbb Z\), compares the last invariant with the symmetric formula, and
+checks the local annihilator valuation for every admissible pivot and every
+prime in its bounded domains. A separate tier enumerates actual spanning trees
+by Prüfer sequences and takes the gcd of their determinants. The default run
+contains 42,727 local/global Smith comparisons, 1,485 tree-gcd comparisons,
+and eight displayed-example checks, for 44,220 positive comparisons. Five
+negative controls detect omission of the factor two, replacement of valuations
+by prime support, conflation of full-list saturation with an edge basis, and
+omission of nonprimitive content.
+
+| Tier | Positive comparisons | Negative controls | Script SHA-256 prefix | Receipt SHA-256 prefix |
+|---|---:|---:|---|---|
+| SymPy multifactor | 143 coordinates | 5 | `3806a7c9b4bf` | `27d4ea5a3e89` |
+| FLINT multifactor/borders | 134 coordinates + 2 borders | 4 | `e7de053c910d` | `f352edfd686e` |
+| Character lattice | 84,853 comparisons | 4 | `b91d2c7b0f11` | `5efd7944b92c` |
+| Local Smith theorem | 44,220 comparisons | 5 | `09ce5ad767d8` | `4d437bf2a6c8` |
+
+The package manifest and Stage-1 provenance record contain the complete
+64-character digests; the table uses unambiguous prefixes for legibility.
+
+Across the four tiers there are 129,352 positive comparisons and 18 detected
+negative controls. Each default tier was run under ordinary Python and
+`python -O`. The normal and
+optimized receipts are byte-identical. This guard matters because proof checks
+implemented only with Python `assert` statements can disappear under
+optimization.
+
+The two polynomial programs use distinct expression engines and determinant
+algorithms, which reduces the probability of a backend-specific error. They
+still implement the same producer specification and were written within the
+same project. Their agreement is cross-implementation evidence, not independent
+reproduction. Exact computation also does not prove novelty or replace the
+integral argument.
+
+# 10. Antecedents, limitations, and the remaining programme
+
+## 10.1 Contribution boundary
+
+The square multiplication-Jacobian identity is a direct antecedent, not a
+novelty claim. Artin identifies the two-factor product-equation Jacobian with
+the transposed resultant matrix [@Artin2022, sec. 1.8, Lemma 1.8.5]; Basu,
+Pollack, and Roy state the monic version [@BasuPollackRoy2006, sec. 4.2.1]; and
+Bhargava, Cremona, Fisher, and Gajović give monic-times-arbitrary multiplication
+over an arbitrary ring [@BhargavaCremonaFisherGajovic2022, Lemma 2.6].
+Chipalkatti supplies the corresponding projective tangent injectivity
+criterion [@Chipalkatti2003, Lemma 5.7]. Chaperon and López de Medrano analyse
+the singularities of polynomial multiplication and prove the arbitrary-factor
+monic corank and pairwise-coprimality criterion
+[@ChaperonLopezDeMedrano2009, Theorems 1 and 3].
+
+The product of pairwise resultants as a multifactor scalar is likewise a direct
+antecedent: Mahatab and Sampath's polynomial CRT theorem gives it for monic
+factors [@MahatabSampath2015, Theorem A.3]. Chardin's
+Koszul-complex treatment places the resultant in generalized Sylvester
+determinantal ideals [@Chardin1993, sec. IV, Lemma 1 and Remark 1]. The
+determinant-of-complexes principle is classical
+[@Jouanolou1991; @Demazure2012; @GelfandKapranovZelevinsky1994].
+
+The projective multiplication map, finite factorisation fibres, and labelled
+root partitions are likewise established background
+[@BreidingKohnSturmfels2024]. Kurth's use of ordered linear factors modulo a
+scaling torus and the symmetric group is a close quotient-space antecedent
+[@Kurth1997]. The signed support, rank, and powers of two in Theorem 6.1 are
+classical all-negative signed-incidence facts
+[@Zaslavsky1982; @Zaslavsky1983Erratum;
+@GrossmanKulkarniSchochetman1995]. The equal-weight vectors
+\(\varepsilon_i+\varepsilon_j\) also occur in the arithmetic of classical
+signed root systems [@ArdilaCastilloHenley2015, sec. 4.2], although the ambient
+lattice and the arbitrary cross-weighting here differ. Hanusa and Zaslavsky's
+complete-incidence result concerns the least common multiple of all minors of
+a Kronecker-product matrix, not the gcd of maximal minors or Smith module of
+the present list [@HanusaZaslavsky2011]. Graph critical groups provide useful
+Smith-form context [@Lorenzini2008], but the present cokernel is not a reduced
+Laplacian cokernel and no chip-firing or monodromy-pairing interpretation is
+asserted.
+
+Arithmetic multiplicity is likewise established language. For a represented
+list, \(m(E)\) is its saturation index and obeys the GCD rule; over the complex
+torus it counts connected components of the common character kernel
+[@Moci2012; @DAdderioMoci2013]. Matroids over \(\mathbb Z\) and over DVRs
+retain the quotient module and local invariant sequence rather than only its
+order [@FinkMoci2016]. Accordingly, neither \(h=m(E)\), the determinant gcd,
+nor the toric component interpretation is claimed as new.
+
+The expanded audit therefore changes the emphasis. Theorem 4.1 is an explicit
+universal non-monic affine lift of classical square and monic identities, and
+Corollary 5.1 is its formal Cauchy--Binet contraction. Theorem 6.1 is a
+factorisation-specific cross-weighted application of classical signed-incidence
+theory. The strongest candidate result is the package formed by Theorems
+7.1, 7.3, and 7.4 and Corollaries 7.2 and 7.5: the one-generator local module,
+every exact valuation, the symmetric global formula, spanning-tree-gcd
+equality, and the scaled Smith form for the complete cross-weighted list in the
+diagonal quotient. The regular-unit interpretation is specific to the
+factorisation open. Theorem 8.1 is best regarded as a scheme-theoretic synthesis
+of classical labelled root partitions with the standard degree of a torus
+isogeny.
+
+Within the expanded bounded corpus, we did not locate the exact all-factor
+affine Plücker tensor with its orientation, the local presentation or closed
+index formula for this cross-weighted diagonal-quotient list, or the tree-gcd
+theorem in this setting. This is a bounded negative search result, not proof of
+priority. Equivalent results may exist in determinant-complex, signed-graphic,
+arithmetic-matroid, toric-arrangement, weighted-incidence, or representation
+language. Independent specialist search and proof reproduction remain
+necessary; no absolute priority claim is made.
+
+## 10.2 Mathematical limitations
+
+Equation (7.1) classifies regular units only on the universal
+pairwise-coprime open over \(\mathbb Z\), and on its polynomial-ring analogue
+over a field. Under arbitrary base change, resultants may split and the base
+may acquire new units. Arbitrary polynomial semi-invariants are not classified,
+and they may become units after deleting additional coefficient divisors.
+
+The full unit-character index is always realised by a square Laurent-unit
+basis. Saturation does not by itself give a basis made from individual
+resultants or nonnegative resultant monomials. The example \((1,2,2)\) has a
+nonnegative unimodular monomial basis, but the corresponding semigroup-basis
+problem is open in general. Likewise, the raw rectangular all-edge map has
+degree \([M:L]\) onto each branch-labelled image; possible identifications of
+different branch translates in an unlabelled rectangular target are not
+classified.
+
+The numerical corank and pairwise-coprime regularity criterion for monic
+multifactor multiplication are already described by Chaperon and López de
+Medrano [@ChaperonLopezDeMedrano2009, Theorem 3]. What remains untreated here
+is therefore not the set-theoretic rank classification, but the
+scheme-theoretic structure of higher collision strata: their Fitting ideals,
+multiplicities, embedded components, subresultant descriptions, and behaviour
+under arbitrary base change. The maximal-minor ideal above handles only the
+generic rank-loss divisor and its generic height-one multiplicity.
+
+Most importantly, local determinant control does not solve the global
+affine-slice problem. A full-rank character matrix fixes the scaling torus up to
+a finite group scheme and can make a normalised factorisation chart étale off
+\(\Delta=0\). To obtain a polynomial Keller map on affine space one must also
+prove that a selected level set is isomorphic to affine space and that the
+restricted multiplication map has the required global fibre or properness
+behaviour. No such recognition theorem follows from the determinant line.
+
+## 10.3 Assurance limitations
+
+The parent two-factor theorem is an immutable unrefereed research candidate
+[@AnonymousBorderedJacobian2026]. The parent venue and this extension share a
+producer/research process. The present induction has not been independently
+reproduced or formally verified. The source search is bounded, the programs are
+producer-written, and the manuscript has not undergone external peer review.
+These limits apply even if every local build and exact check passes.
+
+## 10.4 High-value next problems
+
+The immediate next mathematical tasks are narrower than the programme's
+largest aspirations.
+
+1. Obtain an independently written proof of the affine Plücker lift,
+   including every orientation convention, and independently reproduce the
+   local Smith presentation and global formula.
+2. Formalise the determinant-line composition lemma, the local Tietze
+   elimination, and the Fitting-ideal consequences in a proof assistant.
+3. Classify when the unit-character lattice has a basis of nonnegative
+   resultant monomials, then investigate arbitrary semi-invariant vertical
+   Jacobians after additional divisor deletions.
+4. Refine the classical numerical corank formula to scheme-theoretic higher
+   collision strata using subresultants and Fitting ideals.
+5. Determine whether the complete unit-character group controls monodromy or
+   compactification data beyond the generic torus chart.
+6. Treat affine-slice recognition as a separate global geometry problem before
+   drawing Keller or Hessian conclusions.
+
+The most credible programme-level target is a classification of
+factorisation-derived étale charts and the isolation, if true, of exceptional
+affine-space slices. A four-dimensional Hessian application remains a
+conditional long-range problem, not a consequence suggested by the present
+proof alone.
+
+# 11. Conclusion
+
+The strongest candidate calculation in this paper is now exact. Theorem 7.1
+reduces the complete primitive resultant-character quotient at every prime to
+one generator with the relations \(D_a\) and \(2e_ie_j\). Corollary 7.2 gives
+every valuation of its order; Theorem 7.3 assembles those valuations into a
+symmetric global formula; and Theorem 7.4 shows that spanning-tree minors
+already determine the full arithmetic-matroid multiplicity. Scaling then gives
+the complete nonprimitive Smith form and the connected/étale decomposition of
+the unit-character residual group.
+
+The route to this calculation begins with a classical multiplication Jacobian.
+Theorem 4.1 packages that antecedent as the exact affine determinant-line
+identity
+
+\[
+ \text{maximal-minor tensor}
+ =\text{pairwise resultant divisor}
+ \times\text{torus Plücker tensor},
+\]
+
+with an explicit integral orientation. Multi-bordering pairs the torus tensor
+with the vertical Jacobian of the chosen normalising functions. For
+semi-invariants, this
+pairing is an integer character determinant. Pairwise resultants turn the
+character calculation into cross-weighted signed-incidence theory, from which
+the graph-minor formula follows. Standard arithmetic-matroid language then
+identifies the complete-list gcd as \(m(E)\), while the local presentation
+evaluates that standard invariant and its full quotient module for this
+factorisation-derived list.
+
+The rank-one degree difference is therefore the rank-one character determinant
+inside a broader Smith theory. In higher torus rank, a selected square
+character determinant controls a particular finite chart, whereas the complete
+unit-character lattice controls the residual group intrinsic to the fixed
+pairwise-coprime open. Theorem 8.1 translates square Smith data into total,
+separable, and inseparable scheme degrees through a finite-locally-free
+factorisation. These distinctions are the durable conclusion. The publication
+boundary remains provisional until the proofs and strengthened literature
+position receive genuinely independent specialist review.
+
+# Data and code availability
+
+The research package contains the manuscript source, bibliography, exact SymPy
+and FLINT verification programs, the integer character-lattice program, normal
+and optimized receipts, the Stage-4 local-Smith verifier and receipts, a
+manifest, the proof and literature audit notes, and a formalisation blueprint.
+The package is a local research-stage child artefact at the time of writing. No
+public repository, archival deposit, DOI, or independent reproduction for this
+extension is asserted.
+
+# Submission metadata and licence
+
+The author name, affiliation, complete contribution statement, final conflict
+declaration, funding statement, and distribution licence have not been
+supplied. They are not inferred in this research draft. The artefact is not
+submission-ready or release-ready until the responsible author supplies and
+approves those fields.
+
+# Ethics declaration
+
+This work is theoretical mathematics and involved no human participants,
+personal data, animals, clinical intervention, or sensitive field data. The
+principal research-ethics risks are attribution error, novelty overstatement,
+and inflation of producer checks into independent verification; the manuscript
+states explicit controls for each.
+
+# Author contributions
+
+**Conceptualization:** [to be supplied]. **Formal analysis:** [to be supplied].
+**Methodology:** [to be supplied]. **Software:** [to be supplied].
+**Validation:** [to be supplied]. **Investigation:** [to be supplied].
+**Writing -- original draft:** [to be supplied]. **Writing -- review and
+editing:** [to be supplied].
+
+# Conflict of interest
+
+The author information has not yet been supplied. The parent Evidence Press
+candidate and this extension share a producer/research process; Evidence Press
+availability is not independent scholarly endorsement. No other conflict is
+asserted at this stage.
+
+# Funding
+
+Funding information has not been supplied. The manuscript makes no claim of
+external financial support.
+
+# AI-use disclosure
+
+AI systems, including OpenAI language-model tooling, assisted source discovery,
+proof exploration, exact-check implementation, drafting, and internal review.
+The mathematical statements, citations, code outputs, and assurance labels
+remain the responsibility of the named author or authors once supplied. AI
+assistance and producer-side computation do not constitute independent
+verification. A public version should retain a venue-appropriate disclosure
+with the specific systems and human review responsibilities identified.
+
+# Appendix A. Orientation and indexing conventions
+
+1. Coefficients are ordered by factor, then from \(X^{d_i}\) to \(Y^{d_i}\).
+2. Sylvester rows are shifts of the earlier factor followed by shifts of the
+   later factor.
+3. Deleted source columns use zero-based indices.
+4. The Plücker sign is \((-1)^{\sum I}\).
+5. The torus basis is \(e_b-e_k\), ordered by \(b=1,\ldots,k-1\).
+6. Gradient rows follow multiplication rows and are ordered
+   \(g_1,\ldots,g_{k-1}\).
+7. The multi-border Laplace sign is \((-1)^{nt+\binom t2}\).
+
+Changing any convention changes intermediate signs. The invariant content is
+the determinant-line equality after orientations are transformed together.
+
+# Appendix B. Verification boundary
+
+The default receipts verify the exact cases listed in Section 9 and include
+deliberate negative controls. Larger exploratory cases were also tested but are
+not part of the frozen default receipt. No finite list of symbolic cases proves
+the universal theorem. The proof is the induction in Sections 3 and 4; the
+programs are regression tests for its coordinate consequences.
+
+# Appendix C. Formalisation outline
+
+A proof-assistant kernel can be divided into the following layers:
+
+1. coefficient convolution and the universal multiplication matrix;
+2. the self-contained two-factor complementary-minor identity of Lemma E.1;
+3. signed complementary minors and the block-composition lemma;
+4. resultant multiplicativity and the all-factor induction;
+5. Laplace expansion, Cauchy--Binet, and multi-border contraction;
+6. integer character matrices and Smith determinantal divisors; and
+7. the weighted incidence reduction.
+
+The universal polynomial identities should be formalised before geometric
+language about divisors or étaleness. This order keeps the trusted kernel small
+and isolates the sign-sensitive finite-dimensional linear algebra.
+
+# Appendix D. Bounded antecedent and claim matrix
+
+The following matrix records the source-to-claim boundary used in this draft.
+It is a bounded map of the examined corpus, not a proof that no closer
+antecedent exists.
+
+| Object in this paper | Closest examined antecedent | What the antecedent establishes | Candidate increment evaluated here |
+|---|---|---|---|
+| Square two-factor product Jacobian | Artin, Basu--Pollack--Roy, and Bhargava--Cremona--Fisher--Gajović [@Artin2022; @BasuPollackRoy2006; @BhargavaCremonaFisherGajovic2022] | The coefficient-product Jacobian is a Sylvester matrix, hence the resultant, including a monic-times-arbitrary identity over an arbitrary ring | Retain every affine coefficient direction and record the complete complementary-minor vector with a fixed integral orientation |
+| Projective and monic multifactor rank | Chipalkatti and Chaperon--López de Medrano [@Chipalkatti2003; @ChaperonLopezDeMedrano2009] | Projective tangent injectivity for coprime factors, and the monic arbitrary-factor corank and pairwise-coprimality criterion | Refine the generic rank-loss set to an exact universal maximal-minor ideal with generic height-one multiplicities |
+| Scalar product \(\prod_{i<j}R_{ij}\) | Mahatab--Sampath [@MahatabSampath2015] | Determinant of the polynomial Chinese-remainder map for monic factors | Restore all affine leading-coefficient directions and identify the full complementary-minor tensor |
+| Resultant divisibility in determinantal systems | Chardin [@Chardin1993] | Resultant factors and generic gcd behaviour for generalized Sylvester/Koszul minors | Give every signed maximal minor explicitly for the coefficient differential of labelled multiplication |
+| Determinant-of-complexes framework | Jouanolou, Demazure, and GKZ [@Jouanolou1991; @Jouanolou1997; @Demazure2012; @GelfandKapranovZelevinsky1994] | General resultant constructions, inertia forms, and discriminantal determinants | Isolate the torus-kernel Plücker line and its border contraction in this affine factorisation map |
+| Two-factor affine identity | Parent candidate [@AnonymousBorderedJacobian2026] | Rank-one complementary-minor and bordered identities | Prove the all-factor induction, multi-border formula, and higher-rank character interpretation |
+| Projective multiplication fibres | Breiding--Kohn--Sturmfels [@BreidingKohnSturmfels2024] | Projective polynomial multiplication and finite root-partition geometry | Give an fpqc-local finite-locally-free factorisation that composes the root-partition cover with a translated torus isogeny |
+| Linear-factor quotient geometry | Kurth [@Kurth1997] | Ordered linear factors modulo scaling and permutation actions | Retain arbitrary positive degrees and compute the resultant-character lattice integrally |
+| Signed support of character bases | Zaslavsky with erratum, Grossman--Kulkarni--Schochetman, and Hessert--Mallik [@Zaslavsky1982; @Zaslavsky1983Erratum; @GrossmanKulkarniSchochetman1995; @HessertMallik2023] | All-negative signed-incidence rank, dependence, odd-cycle support, powers of two, and odd-unicyclic invertibility | Evaluate the appended degree balance and cross-degree product and identify the characters with pairwise resultants |
+| Multiplicity of the complete character list | Moci and D'Adderio--Moci [@Moci2012; @DAdderioMoci2013] | Saturation multiplicity, GCD rule, and complex toric component count | Give a closed evaluation for the complete cross-weighted diagonal-quotient list and its factorisation-open interpretation |
+| Exact full-set quotient module | Fink--Moci; Ardila--Castillo--Henley as an adjacent equal-weight root-list case [@FinkMoci2016; @ArdilaCastilloHenley2015] | Matroid-over-ring/DVR framework and arithmetic multiplicities for classical signed-root lists | Prove the one-generator local presentation, every valuation, the scaled global Smith form, and connected/étale residual group factors |
+| Complete-graph incidence subdeterminants | Hanusa--Zaslavsky [@HanusaZaslavsky2011] | Least common multiple of all minors of a fixed Kronecker-product complete-incidence matrix | Compute a gcd of maximal minors and the full Smith module for a different cross-weighted signless list in the diagonal quotient |
+| Jacobian ideals of binary discriminants | D'Andrea--Chipalkatti [@DAndreaChipalkatti2007] | Structure and resolutions for coefficient-gradient ideals of binary discriminants and resultants | Study the rectangular differential of factor multiplication rather than the gradient ideal of the resultant hypersurface |
+
+The affine Plücker identity is best viewed as a derived, coordinate-complete
+refinement of the exact square antecedents. The strongest conditional
+originality claim supported by this matrix is narrower: the exact local module,
+closed valuation/global formula, and tree-gcd equality for the cross-weighted
+complete-edge list were not located in the bounded search. Specialist review
+could still identify an equivalent formulation in weighted-incidence,
+arithmetic-matroid, toric, logarithmic, or representation-theoretic language.
+
+# Appendix E. Self-contained affine lift of the classical two-factor Jacobian identity
+
+Classical sources identify a square two-factor product Jacobian with the
+resultant [@Artin2022, sec. 1.8, Lemma 1.8.5; @BasuPollackRoy2006, sec. 4.2.1;
+@BhargavaCremonaFisherGajovic2022, Lemma 2.6]. This appendix supplies the
+coordinate-complete affine complementary-minor lift and fixes its sign in the
+conventions of this paper. It also reproduces the parent rank-one base theorem
+[@AnonymousBorderedJacobian2026], so Theorem 4.1 remains self-contained without
+asserting priority for the underlying square Jacobian identity.
+
+**Lemma E.1 (two-factor complementary minors over \(\mathbb Z\)).** Let
+
+\[
+ A=\sum_{i=0}^{r}a_iX^{r-i}Y^i,\qquad
+ B=\sum_{j=0}^{s}b_jX^{s-j}Y^j,
+ \qquad r,s\ge1,
+\]
+
+and write \(AB=\sum_{h=0}^{r+s}c_hX^{r+s-h}Y^h\). Order source
+coordinates as \(a_0,\ldots,a_r,b_0,\ldots,b_s\) and target coordinates as
+\(c_0,\ldots,c_{r+s}\). Let \(M\) be the coefficient differential,
+
+\[
+ M[h,i]=b_{h-i},\qquad
+ M[h,r+1+j]=a_{h-j},
+\]
+
+with out-of-range subscripts equal to zero, and put
+
+\[
+ \kappa=(a_0,\ldots,a_r,-b_0,\ldots,-b_s).
+\]
+
+Then
+
+\[
+ \boxed{
+ (-1)^\ell\det M_{\widehat\ell}
+ =(-1)^{r(s+1)}\operatorname{Res}(A,B)\kappa_\ell,
+ \qquad 0\le\ell\le r+s+1.
+ }
+\tag{E.1}
+\]
+
+**Proof.** Both sides are polynomials with integer coefficients, so it
+suffices to prove their equality on a nonempty Zariski-open subset over
+\(\mathbb C\). Dehomogenise by \(t=Y/X\), work where \(a_rb_s\ne0\), and
+write
+
+\[
+ a(t)=a_r\prod_{i=1}^{r}(t-\alpha_i),\qquad
+ b(t)=b_s\prod_{j=1}^{s}(t-\beta_j),
+\]
+
+with all \(\alpha_i,\beta_j\) pairwise distinct. In the Sylvester convention
+of Section 2,
+
+\[
+ \operatorname{Vand}(x_1,\ldots,x_m)
+ :=\prod_{1\le u<v\le m}(x_v-x_u).
+\]
+
+Every Vandermonde below uses the displayed order of its arguments. With this
+orientation,
+
+\[
+ \operatorname{Res}(A,B)
+ =a_r^sb_s^r\prod_{i,j}(\beta_j-\alpha_i)
+ =b_s^r\prod_j a(\beta_j)
+ =(-1)^{rs}a_r^s\prod_i b(\alpha_i).
+\tag{E.2}
+\]
+
+For completeness, transpose the Sylvester matrix and view it as
+\((u,w)\mapsto ua+wb\). Evaluating the output at
+\((\alpha_1,\ldots,\alpha_r,\beta_1,\ldots,\beta_s)\) makes the matrix
+block anti-diagonal. Its determinant is
+
+\[
+ (-1)^{rs}
+ \left(\prod_i b(\alpha_i)\right)\operatorname{Vand}(\alpha)
+ \left(\prod_j a(\beta_j)\right)\operatorname{Vand}(\beta).
+\]
+
+Division by the evaluation determinant
+
+\[
+ \operatorname{Vand}(\alpha)\operatorname{Vand}(\beta)
+ \prod_{i,j}(\beta_j-\alpha_i)
+\]
+
+gives (E.2); the specialisation \((A,B)=(X^r,Y^s)\) fixes the
+normalisation as \(+1\).
+
+Choose \(\tau\in\mathbb C\) distinct from every root and evaluate the
+degree-\((r+s)\) target at
+
+\[
+ \alpha_1,\ldots,\alpha_r,\beta_1,\ldots,\beta_s,\tau.
+\]
+
+Let \(V\) be this evaluation matrix. Its determinant is the Vandermonde in
+the displayed order. At \(\alpha_i\), the evaluated Jacobian row is
+
+\[
+ b(\alpha_i)(1,\alpha_i,\ldots,\alpha_i^r\mid0);
+\]
+
+at \(\beta_j\), it is
+
+\[
+ a(\beta_j)(0\mid1,\beta_j,\ldots,\beta_j^s).
+\]
+
+The \(\tau\)-row is the sum of its \(A\)-block and \(B\)-block parts. After
+one source column is deleted, one summand has deficient block rank and
+vanishes.
+
+We also need the gap-Vandermonde identity. For \(m\) variables
+\(x_1,\ldots,x_m\), let \(W_{\widehat h}(x)\) be the \(m\)-square
+evaluation matrix with exponents
+\(\{0,\ldots,m\}\setminus\{h\}\). Comparing coefficients of \(T^h\) in
+the Vandermonde determinant on \((x_1,\ldots,x_m,T)\) gives
+
+\[
+ \det W_{\widehat h}(x)
+ =e_{m-h}(x)\operatorname{Vand}(x).
+\tag{E.3}
+\]
+
+Suppose first that the deleted column is \(b_j\), of global index
+\(\ell=r+1+j\). The surviving term places the \(\tau\)-row in the
+\(A\)-block. Moving it past the \(s\) beta rows contributes \((-1)^s\),
+and block expansion gives
+
+\[
+ \begin{aligned}
+ \det(VM_{\widehat\ell})
+ ={}&(-1)^s
+ \left(\prod_i b(\alpha_i)\right)b(\tau)
+ \operatorname{Vand}(\alpha,\tau)\\
+ &\quad\cdot
+ \left(\prod_j a(\beta_j)\right)
+ \det W_{\widehat j}(\beta).
+ \end{aligned}
+\tag{E.4}
+\]
+
+Use (E.2)--(E.3),
+
+\[
+ b(\tau)=b_s\prod_j(\tau-\beta_j),\qquad
+ \prod_i b(\alpha_i)=(-1)^{rs}b_s^r
+       \prod_{i,j}(\beta_j-\alpha_i),
+\]
+
+and divide by \(\det V\). All Vandermonde and \(\tau\)-factors cancel,
+leaving
+
+\[
+ \det M_{\widehat\ell}
+ =(-1)^{s(r+1)}b_se_{s-j}(\beta)\operatorname{Res}(A,B).
+\tag{E.5}
+\]
+
+Since \(b_j=(-1)^{s-j}b_se_{s-j}(\beta)\),
+
+\[
+ \begin{aligned}
+ (-1)^\ell\det M_{\widehat\ell}
+ &=(-1)^{r+1+j+s(r+1)+s-j}
+   b_j\operatorname{Res}(A,B)\\
+ &=(-1)^{r(s+1)}(-b_j)\operatorname{Res}(A,B),
+ \end{aligned}
+\]
+
+which is (E.1) in the \(B\)-block.
+
+If the deleted column is \(a_i\), its global index is \(\ell=i\). The
+surviving term places the \(\tau\)-row in the \(B\)-block, and the existing
+row order is already block compatible:
+
+\[
+ \begin{aligned}
+ \det(VM_{\widehat i})
+ ={}&\left(\prod_i b(\alpha_i)\right)
+ \det W_{\widehat i}(\alpha)\\
+ &\quad\cdot
+ \left(\prod_j a(\beta_j)\right)a(\tau)
+ \operatorname{Vand}(\beta,\tau).
+ \end{aligned}
+\tag{E.6}
+\]
+
+The same cancellations yield
+
+\[
+ \det M_{\widehat i}
+ =(-1)^{rs}a_re_{r-i}(\alpha)\operatorname{Res}(A,B)
+ =(-1)^{rs+r-i}a_i\operatorname{Res}(A,B).
+\tag{E.7}
+\]
+
+Multiplication by \((-1)^i\) gives (E.1) in the \(A\)-block. The identity
+holds on the chosen dense open subset, hence as a polynomial identity over
+\(\mathbb Z\). \(\square\)
+
+For reference, the two deleted-column parity calculations are:
+
+| Deleted block | Global index | Sign of \(\det M_{\widehat\ell}\) after coefficient substitution | Cofactor sign | Kernel-coordinate sign | Remaining scalar sign |
+|---|---:|---:|---:|---:|---:|
+| \(A\), column \(a_i\) | \(i\) | \(rs+r-i\) | \(i\) | \(0\) for \(a_i\) | \(r(s+1)\) |
+| \(B\), column \(b_j\) | \(r+1+j\) | \(s(r+1)+s-j\) | \(r+1+j\) | \(1\) for \(-b_j\) | \(r(s+1)\) |
+
+All entries in the last four columns are exponents of \((-1)\), read modulo
+two. This table records the cancellations between (E.4)--(E.5) and
+(E.6)--(E.7) without changing the proof.
+
+Expansion along an arbitrary final row \(v\) now gives the equivalent bordered
+form
+
+\[
+ \det\begin{pmatrix}M\\v\end{pmatrix}
+ =(-1)^{s(r+1)+1}\operatorname{Res}(A,B)
+   \langle v,\kappa\rangle,
+\]
+
+which also confirms the \(k=2\) specialisation of Corollary 5.1.
+
+# References

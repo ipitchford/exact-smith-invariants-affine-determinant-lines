@@ -1,0 +1,10 @@
+character-lattice exact verification
+python=3.13.5 sympy=1.14.0
+bounds=max_vertices:5,max_degree:3
+PASS tree determinant formula checks=31761
+PASS general maximal-minor graph formula checks=52741
+PASS Smith structure and bad-prime checks=351
+PASS NC1 total sum substituted for bipartite balance detected
+PASS NC2 odd-cycle factor 2 omitted detected
+PASS NC3 common gcd omitted from Smith form detected
+PASS NC4 rank-one equal-degree collapse extrapolated to k=3 detected

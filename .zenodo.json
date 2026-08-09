@@ -1,0 +1,34 @@
+{
+  "title": "Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation",
+  "description": "Unrefereed candidate manuscript and exact evidence package for an affine all-factor determinant-line theorem and an exact local/global Smith calculation for the complete pairwise-resultant character lattice. Producer-side replay passes; independent reproduction, formal verification, specialist priority resolution, and external peer review are not claimed.",
+  "creators": [
+    {"name": "Anonymous"}
+  ],
+  "license": "cc-zero",
+  "keywords": [
+    "binary forms",
+    "resultants",
+    "Smith normal form",
+    "arithmetic matroids",
+    "torus characters",
+    "determinant lines",
+    "computer-assisted mathematics",
+    "unrefereed candidate"
+  ],
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21855302",
+      "relation": "isDerivedFrom",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://evidencepress.org/releases/bordered-jacobian-foundations/",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    }
+  ]
+}
+

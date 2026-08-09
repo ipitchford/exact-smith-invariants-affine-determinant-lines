@@ -1,0 +1,88 @@
+{
+  "assurance": {
+    "independent_reproduction": false,
+    "producer_side": true,
+    "status": "research-stage"
+  },
+  "evidence_summary": {
+    "mathematical_negative_controls": 13,
+    "positive_exact_comparisons": 85132,
+    "receipt_mode_parity": "byte-identical-within-each-tier"
+  },
+  "inputs": [
+    {
+      "bytes": 30027,
+      "id": "stage1-report",
+      "logical_name": "stage1_research_report.md",
+      "role": "research-report",
+      "sha256": "ab33b402df71c24d48932b46631415a57b3b6c208a0cc24a7701cf55d8869ed1"
+    },
+    {
+      "bytes": 11199,
+      "id": "sympy-script",
+      "logical_name": "explore_multifactor.py",
+      "role": "verification-source",
+      "sha256": "3806a7c9b4bf38598cc31ef438783984792d7e58f15d5fcf0726b93dd1879ebe"
+    },
+    {
+      "bytes": 13114,
+      "id": "flint-script",
+      "logical_name": "verify_multifactor_flint.py",
+      "role": "verification-source",
+      "sha256": "e7de053c910d800bbdc73dd15ebc7d42bf135e2853c97c84e58754557db98adb"
+    },
+    {
+      "bytes": 13151,
+      "id": "character-lattice-script",
+      "logical_name": "verify_character_lattice.py",
+      "role": "verification-source",
+      "sha256": "b91d2c7b0f11a5470fd1bf41964b579973ae6b15cb3cc18e6e5b4854225bd91a"
+    },
+    {
+      "bytes": 681,
+      "id": "sympy-receipt-normal",
+      "logical_name": "exploratory_receipt.txt",
+      "role": "verification-receipt",
+      "sha256": "27d4ea5a3e89a95ffd31d426f8d4ae50ad37794652f5cc60bec324c7e09133e2"
+    },
+    {
+      "bytes": 681,
+      "id": "sympy-receipt-optimized",
+      "logical_name": "exploratory_receipt_optimized.txt",
+      "role": "verification-receipt",
+      "sha256": "27d4ea5a3e89a95ffd31d426f8d4ae50ad37794652f5cc60bec324c7e09133e2"
+    },
+    {
+      "bytes": 758,
+      "id": "flint-receipt-normal",
+      "logical_name": "multifactor_flint_receipt.txt",
+      "role": "verification-receipt",
+      "sha256": "f352edfd686e54fc5894839bcba05f9686aa36617a5563a1f73e53d5929588c4"
+    },
+    {
+      "bytes": 758,
+      "id": "flint-receipt-optimized",
+      "logical_name": "multifactor_flint_receipt_optimized.txt",
+      "role": "verification-receipt",
+      "sha256": "f352edfd686e54fc5894839bcba05f9686aa36617a5563a1f73e53d5929588c4"
+    },
+    {
+      "bytes": 471,
+      "id": "character-lattice-receipt-normal",
+      "logical_name": "character_lattice_receipt.txt",
+      "role": "verification-receipt",
+      "sha256": "5efd7944b92cb8e9422d3ea33b17545a6e0b386489ce01c9578dc02e8997df51"
+    },
+    {
+      "bytes": 471,
+      "id": "character-lattice-receipt-optimized",
+      "logical_name": "character_lattice_receipt_optimized.txt",
+      "role": "verification-receipt",
+      "sha256": "5efd7944b92cb8e9422d3ea33b17545a6e0b386489ce01c9578dc02e8997df51"
+    }
+  ],
+  "recorded_on": "2026-08-09",
+  "schema_version": "1.0",
+  "source_relationship": "producer-stage-inputs-not-independent-reproduction"
+}
+

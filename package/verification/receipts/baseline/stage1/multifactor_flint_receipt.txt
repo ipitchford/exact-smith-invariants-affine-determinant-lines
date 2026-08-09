@@ -1,0 +1,14 @@
+multifactor Pluecker exact FLINT verification
+python=3.13.5 python-flint=0.9.0
+PASS FLINT degrees=(1, 1, 1) coordinates=15 orientation=-1
+PASS FLINT degrees=(1, 1, 2) coordinates=21 orientation=-1
+PASS FLINT degrees=(1, 2, 1) coordinates=21 orientation=+1
+PASS FLINT degrees=(2, 1, 1) coordinates=21 orientation=-1
+PASS FLINT degrees=(1, 1, 1, 1) coordinates=56 orientation=-1
+PASS FLINT multiborder degrees=(1, 1, 1) edges=((0, 1), (1, 2)) detW=+1
+PASS FLINT multiborder degrees=(1, 1, 2) edges=((0, 1), (1, 2)) detW=+2
+PASS FLINT NC1 missing pairwise resultant detected
+PASS FLINT NC2 reversed torus basis vector detected
+PASS FLINT NC3 wrong orientation detected
+PASS FLINT NC4 perturbed differential detected
+PASS total symbolic Pluecker coordinates=134

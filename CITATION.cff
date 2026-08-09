@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "Please preserve the unrefereed-candidate status and exact version when citing."
+title: "Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation"
+type: software
+version: 0.1.0-candidate
+date-released: 2026-08-09
+authors:
+  - name: "Anonymous"
+abstract: >-
+  An unrefereed candidate manuscript and exact evidence package proving an
+  affine all-factor determinant-line identity and computing the local and
+  global Smith invariants of the complete pairwise-resultant character lattice.
+license: MIT
+repository-code: "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines"
+url: "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate"
+keywords:
+  - binary forms
+  - resultants
+  - Smith normal form
+  - arithmetic matroids
+  - torus characters
+  - determinant lines
+  - computer-assisted mathematics
+preferred-citation:
+  type: article
+  title: "Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation"
+  authors:
+    - name: "Anonymous"
+  year: 2026
+  version: "0.1.0-candidate"
+  notes: "Unrefereed candidate; original non-code content CC0 1.0; code MIT."
+references:
+  - type: article
+    title: "The bordered Jacobian of binary-form multiplication: an integral foundation for the degree-difference principle"
+    authors:
+      - name: "Anonymous"
+    year: 2026
+    doi: 10.5281/zenodo.21855302
+

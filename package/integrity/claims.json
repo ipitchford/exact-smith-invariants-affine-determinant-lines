@@ -1,0 +1,200 @@
+{
+  "claims": [
+    {
+      "computational_evidence": [
+        "sympy-plucker",
+        "flint-plucker-border"
+      ],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-T1",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "theorem",
+      "manuscript_location": "Theorem 4.1",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842"
+      ],
+      "novelty_status": "not-found-in-bounded-search",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "positive degree vectors",
+        "universal integer coefficient ring",
+        "fixed block-major and ascending-Sylvester conventions"
+      ],
+      "statement_digest": null,
+      "status_notes": "Simultaneous non-monic affine Plucker lift of classical square multiplication-Jacobian identities, with every complementary minor and the universal orientation recorded.",
+      "title": "Affine all-factor signed Plucker lift"
+    },
+    {
+      "computational_evidence": [
+        "flint-plucker-border"
+      ],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-T2",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "corollary",
+      "manuscript_location": "Corollaries 5.1 and 5.2",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842"
+      ],
+      "novelty_status": "not-found-in-bounded-search",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "gradient rows in the stated multi-border corollary",
+        "the arbitrary stacked-row identity is established inside the proof",
+        "the semi-invariant formula is the following corollary"
+      ],
+      "statement_digest": null,
+      "status_notes": "Formal Laplace and Cauchy-Binet contraction of the affine Plucker tensor, with explicit row-stack and orientation sign.",
+      "title": "Multi-border contraction"
+    },
+    {
+      "computational_evidence": [
+        "character-lattice"
+      ],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-T3",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "theorem",
+      "manuscript_location": "Theorem 6.1 and Corollary 6.2",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842",
+        "artifact:provenance-stage4-arithmetic-literature-audit-md:19999f5d2110"
+      ],
+      "novelty_status": "classical-antecedent-attributed",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "one tree component and remaining odd-unicyclic components",
+        "absolute determinant formula",
+        "classical signed-graphic support and incidence-matrix ingredients are attributed",
+        "the degree-cross-weighted balance formula is the factorisation-specific specialization"
+      ],
+      "statement_digest": null,
+      "status_notes": "Weighted reduction to signless graph incidence; not a novelty claim for the unweighted incidence theorem.",
+      "title": "Weighted resultant-character graph-minor formula"
+    },
+    {
+      "computational_evidence": [
+        "character-lattice",
+        "local-smith"
+      ],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-T4",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "theorem",
+      "manuscript_location": "Theorems 7.1, 7.3, and 7.4; Corollaries 7.2 and 7.5",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842",
+        "artifact:provenance-stage4-arithmetic-literature-audit-md:19999f5d2110"
+      ],
+      "novelty_status": "not-found-in-bounded-search",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "k at least 3 and positive degree vectors",
+        "primitive degrees for the local presentation and closed index formula",
+        "the nonprimitive statement restores the common degree content",
+        "pairwise-resultant character lattice on the fixed coprime open"
+      ],
+      "statement_digest": null,
+      "status_notes": "One-generator p-local presentation, every p-adic valuation, symmetric global index, spanning-tree-gcd equality, complete nonprimitive Smith form, and connected/etale residual group factors.",
+      "title": "Exact local and global resultant-character Smith calculation"
+    },
+    {
+      "computational_evidence": [],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-C1",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "proposition",
+      "manuscript_location": "Section 7.1, Corollary 7.5, and Section 8.2",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage4-arithmetic-literature-audit-md:19999f5d2110"
+      ],
+      "novelty_status": "classical-antecedent-attributed",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "the fixed universal pairwise-coprime open U",
+        "regular units modulo constants, not arbitrary polynomial semi-invariants",
+        "base change or deletion of additional divisors can change the unit group",
+        "degree onto the branch-labelled character image, not an unlabelled factorisation target"
+      ],
+      "statement_digest": null,
+      "status_notes": "The UFD unit calculation identifies the complete edge lattice with all regular-unit characters on U; its quotient gives the intrinsic residual diagonalizable group, and a square Laurent basis realises its index.",
+      "title": "Unit-character residual group of the coprime open"
+    },
+    {
+      "computational_evidence": [],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-C2",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "theorem",
+      "manuscript_location": "Theorem 8.1",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842"
+      ],
+      "novelty_status": "classical-antecedent-attributed",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "research-proof-draft",
+      "scope_notes": [
+        "algebraically closed base field",
+        "fixed labelled degrees and square full-rank semi-invariant character matrix",
+        "finite locally free only after restriction to the constructed dense target open",
+        "scheme degree, separable degree, inseparable factor, and geometric point count are distinguished"
+      ],
+      "statement_digest": null,
+      "status_notes": "Scheme-theoretic synthesis: the map is finite locally free on a dense target open, of rank equal to the classical labelled root-partition degree times the standard torus-isogeny order.",
+      "title": "Finite normalised factorisation cover"
+    },
+    {
+      "computational_evidence": [],
+      "formal_declaration": null,
+      "formal_evidence_artifacts": [],
+      "id": "DLCL-N1",
+      "independent_evidence_artifacts": [],
+      "independent_reproduction": false,
+      "kind": "search-outcome",
+      "manuscript_location": "Section 10.1 and Appendix D",
+      "novelty_evidence_artifacts": [
+        "artifact:provenance-stage1-antecedent-reaudit-md:f45348efe842",
+        "artifact:provenance-stage4-arithmetic-literature-audit-md:19999f5d2110"
+      ],
+      "novelty_status": "not-found-in-bounded-search",
+      "peer_review_artifacts": [],
+      "peer_reviewed": false,
+      "proof_status": "not-applicable",
+      "scope_notes": [
+        "bounded producer search",
+        "not an absolute novelty or priority conclusion",
+        "exact classical square and monic multiplication-Jacobian antecedents identified",
+        "classical multifactor rank, scalar resultant, root-partition, signed-graphic, and arithmetic-matroid ingredients identified",
+        "focused search included matroids over rings, toric arrangements, weighted incidence matrices, and critical-group comparisons"
+      ],
+      "statement_digest": null,
+      "status_notes": "After focused exact-object and arithmetic-lattice re-audits, the simultaneous non-monic signed Plucker tensor and the exact cross-weighted local/global quotient calculation were not located in the expanded bounded search; this is not proof of priority.",
+      "title": "Bounded novelty-search outcome"
+    }
+  ],
+  "package_status": "research-draft",
+  "schema_version": "1.0"
+}

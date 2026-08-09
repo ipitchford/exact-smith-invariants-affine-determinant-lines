@@ -1,0 +1,12 @@
+PASS degrees=(1, 1) factors=2 coordinates=4 orientation=+1
+PASS degrees=(1, 2) factors=2 coordinates=5 orientation=-1
+PASS degrees=(1, 1, 1) factors=3 coordinates=15 orientation=-1
+PASS degrees=(1, 1, 2) factors=3 coordinates=21 orientation=-1
+PASS degrees=(1, 2, 1) factors=3 coordinates=21 orientation=+1
+PASS degrees=(2, 1, 1) factors=3 coordinates=21 orientation=-1
+PASS degrees=(1, 1, 1, 1) factors=4 coordinates=56 orientation=-1
+PASS NC1 missing pairwise resultant detected
+PASS NC2 squared collision product detected
+PASS NC3 reversed torus basis vector detected
+PASS NC4 omitted recursive orientation constant detected
+PASS NC5 perturbed convolution differential detected

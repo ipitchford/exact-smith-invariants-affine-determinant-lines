@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Visual abstract for exact Smith invariants and affine determinant lines</title>
+  <desc id="desc">A flow diagram connecting multiplication of binary forms, collision resultants, lost torus scales, the affine Plucker identity, and exact Smith invariants.</desc>
+  <rect width="1600" height="900" fill="#F8F5EC"/>
+  <rect x="0" y="0" width="1600" height="132" fill="#0B1F33"/>
+  <text x="80" y="63" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Exact Smith invariants of factorisation maps</text>
+  <text x="80" y="105" fill="#CFE7E7" font-family="Arial, Helvetica, sans-serif" font-size="24">Resultants detect collisions · torus characters recover lost scale</text>
+
+  <rect x="80" y="190" width="420" height="184" rx="22" fill="#FFFFFF" stroke="#0A7C86" stroke-width="4"/>
+  <text x="112" y="235" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Multiply labelled factors</text>
+  <text x="112" y="292" fill="#0B1F33" font-family="Georgia, serif" font-size="30">(A_1, ..., A_k) → A_1 ... A_k</text>
+  <text x="112" y="338" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="21">The differential forgets k−1 rescalings.</text>
+
+  <path d="M500 282 H590" stroke="#0B1F33" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0B1F33"/>
+    </marker>
+  </defs>
+
+  <rect x="600" y="165" width="420" height="130" rx="22" fill="#E6F4F3" stroke="#0A7C86" stroke-width="4"/>
+  <text x="632" y="208" fill="#0A5660" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Rank-loss divisor</text>
+  <text x="632" y="258" fill="#0B1F33" font-family="Georgia, serif" font-size="28">Δ = product Res(A_i, A_j)</text>
+
+  <rect x="600" y="320" width="420" height="130" rx="22" fill="#FFF4D6" stroke="#D69E2E" stroke-width="4"/>
+  <text x="632" y="363" fill="#805A00" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Lost torus directions</text>
+  <text x="632" y="413" fill="#0B1F33" font-family="Georgia, serif" font-size="28">T = {(lambda_i) : product lambda_i = 1}</text>
+
+  <path d="M1020 230 H1110 V340" stroke="#0B1F33" stroke-width="4" fill="none"/>
+  <path d="M1020 385 H1110 V340 H1170" stroke="#0B1F33" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="1170" y="220" width="350" height="240" rx="22" fill="#0B1F33"/>
+  <text x="1204" y="266" fill="#CFE7E7" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">AFFINE PLÜCKER IDENTITY</text>
+  <text x="1204" y="330" fill="#FFFFFF" font-family="Georgia, serif" font-size="30">maximal minor</text>
+  <text x="1204" y="375" fill="#FFFFFF" font-family="Georgia, serif" font-size="30">= ± Δ · Plücker(K)</text>
+  <text x="1204" y="423" fill="#CFE7E7" font-family="Arial, Helvetica, sans-serif" font-size="19">over the universal integer ring</text>
+
+  <path d="M1345 460 V530" stroke="#0B1F33" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="175" y="540" width="1250" height="238" rx="28" fill="#FFFFFF" stroke="#C85C5C" stroke-width="5"/>
+  <text x="220" y="590" fill="#943C3C" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Exact complete-edge Smith theory</text>
+  <text x="220" y="650" fill="#0B1F33" font-family="Georgia, serif" font-size="27">C_e tensor Z_(p) ≅ Z_(p) / (D_a, 2 e_i e_j : i,j ≠ a)</text>
+  <line x1="220" y1="680" x2="1380" y2="680" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="220" y="724" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="21">all p-adic valuations</text>
+  <text x="535" y="724" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="21">spanning-tree gcd</text>
+  <text x="835" y="724" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="21">O(k^2) computation</text>
+  <text x="1120" y="724" fill="#0B1F33" font-family="Arial, Helvetica, sans-serif" font-size="21">diag(g,…,g,gh)</text>
+
+  <text x="80" y="848" fill="#4A5568" font-family="Arial, Helvetica, sans-serif" font-size="18">Unrefereed candidate · producer-side replay · no Keller, Hessian, or Jacobian-conjecture consequence claimed</text>
+  <text x="1520" y="848" fill="#4A5568" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="18">CC0 1.0</text>
+</svg>

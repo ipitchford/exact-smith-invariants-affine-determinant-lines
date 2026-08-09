@@ -1,0 +1,12 @@
+local Smith exact verification
+python=3.13.5 sympy=1.14.0
+PASS local/global Smith checks=42727
+PASS tree-gcd checks=1485
+PASS displayed examples=8
+PASS NC1 factor-two omission detected
+PASS NC2 odd support substituted for valuation detected
+PASS NC3 two-adic support substituted for valuation detected
+PASS NC4 full-list gcd replaced by edge basis detected
+PASS NC5 nonprimitive content omitted detected
+PASS deliberate negative controls detected=5
+PASS summary positive=44220 negative_controls=5

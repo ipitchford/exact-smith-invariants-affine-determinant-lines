@@ -1,0 +1,4 @@
+# Direct producer-side dependencies; version pins are not a hash-locked environment.
+jsonschema==4.26.0
+python-flint==0.9.0
+sympy==1.14.0
