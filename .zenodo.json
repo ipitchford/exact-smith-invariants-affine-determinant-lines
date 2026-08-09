@@ -28,7 +28,11 @@
       "identifier": "https://evidencepress.org/releases/bordered-jacobian-foundations/",
       "relation": "isDerivedFrom",
       "scheme": "url"
+    },
+    {
+      "identifier": "https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
     }
   ]
 }
-

@@ -26,5 +26,9 @@ multifactor rank criterion, signed-incidence support, arithmetic-matroid gcd
 rule, and root-partition count are classical inputs. No arbitrary normaliser,
 affine-slice, Keller-map, Hessian, or Jacobian-conjecture theorem is claimed.
 
-Parent: <https://evidencepress.org/releases/bordered-jacobian-foundations/>.
+Public release:
 
+- Evidence Press: <https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/>
+- Zenodo: <https://doi.org/10.5281/zenodo.21861347>
+- GitHub: <https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate>
+- Parent: <https://evidencepress.org/releases/bordered-jacobian-foundations/>

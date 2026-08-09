@@ -11,8 +11,10 @@ abstract: >-
   affine all-factor determinant-line identity and computing the local and
   global Smith invariants of the complete pairwise-resultant character lattice.
 license: MIT
+doi: 10.5281/zenodo.21861347
 repository-code: "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines"
-url: "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate"
+repository-artifact: "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate"
+url: "https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/"
 keywords:
   - binary forms
   - resultants
@@ -28,6 +30,8 @@ preferred-citation:
     - name: "Anonymous"
   year: 2026
   version: "0.1.0-candidate"
+  doi: 10.5281/zenodo.21861347
+  url: "https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/"
   notes: "Unrefereed candidate; original non-code content CC0 1.0; code MIT."
 references:
   - type: article
@@ -36,4 +40,3 @@ references:
       - name: "Anonymous"
     year: 2026
     doi: 10.5281/zenodo.21855302
-

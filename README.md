@@ -68,12 +68,15 @@ reproduction or peer review.
 - Candidate version: `0.1.0-candidate`
 - Immutable tag: `v0.1.0-candidate`
 - Repository: <https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines>
+- GitHub prerelease:
+  <https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate>
+- Version DOI: <https://doi.org/10.5281/zenodo.21861347>
+- Concept DOI: <https://doi.org/10.5281/zenodo.21861346>
+- Evidence Press page:
+  <https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/>
 - Parent DOI: <https://doi.org/10.5281/zenodo.21855302>
 - Parent Evidence Press page:
   <https://evidencepress.org/releases/bordered-jacobian-foundations/>
-
-The Zenodo version DOI and Evidence Press child page are added to this file
-after public readback.
 
 ## Licence and AI disclosure
 
@@ -85,4 +88,3 @@ AI systems assisted with source discovery, mathematical exploration, proof
 development, exact-check implementation, adversarial testing, drafting,
 graphics, narration, and packaging. AI systems are not authors. The audio uses
 an AI-generated voice and is a communication aid, not mathematical evidence.
-
